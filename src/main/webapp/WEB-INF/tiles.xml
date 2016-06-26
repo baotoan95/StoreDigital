@@ -1,0 +1,315 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC
+       "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN"
+       "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+	<!-- Error -->
+	<definition name="403" template="/403.jsp"></definition>
+	
+	<definition name="common" template="/templates/template.jsp">
+		<put-attribute name="header" value="/templates/header.jsp"/>
+		<put-attribute name="footer" value="/templates/footer.jsp" />
+	</definition>
+
+	<definition name="index" extends="common">
+		<put-attribute name="title" value="Trang chủ" />
+		<put-attribute name="body" value="/pages/index.jsp" />
+	</definition>
+	
+	<definition name="about_us" extends="common">
+		<put-attribute name="title" value="Về chúng tôi" />
+		<put-attribute name="body" value="/pages/about_us.jsp" />
+	</definition>
+	
+	<definition name="compare" extends="common">
+		<put-attribute name="title" value="Danh sách so sánh" />
+		<put-attribute name="body" value="/pages/compare.jsp" />
+	</definition>
+	
+	<definition name="contact_us" extends="common">
+		<put-attribute name="title" value="Liên hệ" />
+		<put-attribute name="body" value="/pages/contact_us.jsp" />
+	</definition>
+	
+	<definition name="dashboard" extends="common">
+		<put-attribute name="title" value="Thông tin tài khoản" />
+		<put-attribute name="body" value="/pages/dashboard.jsp" />
+	</definition>
+	
+	<definition name="delivery" extends="common">
+		<put-attribute name="title" value="Chính sách giao hàng" />
+		<put-attribute name="body" value="/pages/delivery.jsp" />
+	</definition>
+	
+	<definition name="detail_order" extends="common">
+		<put-attribute name="title" value="Chi tiết đơn hàng" />
+		<put-attribute name="body" value="/pages/detail_order.jsp" />
+	</definition>
+	
+	<definition name="faq" extends="common">
+		<put-attribute name="title" value="Câu hỏi thường gặp" />
+		<put-attribute name="body" value="/pages/faq.jsp" />
+	</definition>
+	
+	<definition name="grid" extends="common">
+		<put-attribute name="title" value="Danh sách sản phẩm" />
+		<put-attribute name="body" value="/pages/grid.jsp" />
+	</definition>
+	
+	<definition name="login" extends="common">
+		<put-attribute name="title" value="Đăng nhập" />
+		<put-attribute name="body" value="/pages/login.jsp" />
+	</definition>
+	
+	<definition name="message" extends="common">
+		<put-attribute name="title" value="Thông tin gửi tới khách hàng" />
+		<put-attribute name="body" value="/pages/message.jsp" />
+	</definition>
+	
+	<definition name="product_detail" extends="common">
+		<put-attribute name="title" value="Chi tiết sản phẩm" />
+		<put-attribute name="body" value="/pages/product_detail.jsp" />
+	</definition>
+	
+	<definition name="registry" extends="common">
+		<put-attribute name="title" value="Đăng ký" />
+		<put-attribute name="body" value="/pages/registry.jsp" />
+	</definition>
+	
+	<definition name="shopping_cart" extends="common">
+		<put-attribute name="title" value="Giỏ hàng" />
+		<put-attribute name="body" value="/pages/shopping_cart.jsp" />
+	</definition>
+	
+	<definition name="sitemap" extends="common">
+		<put-attribute name="title" value="Sitemap" />
+		<put-attribute name="body" value="/pages/sitemap.jsp" />
+	</definition>
+	
+	<definition name="wishlist" extends="common">
+		<put-attribute name="title" value="Danh sách ưu thích" />
+		<put-attribute name="body" value="/pages/wishlist.jsp" />
+	</definition>
+	
+	<definition name="404error" extends="common">
+		<put-attribute name="title" value="Page not found" />
+		<put-attribute name="body" value="404error.jsp" />
+	</definition>
+	
+	
+	<!-- Admin tiles -->
+	<definition name="adminCommon" template="/templates/admin_template.jsp">
+		<put-attribute name="header" value="/templates/admin_header.jsp"/>
+		<put-attribute name="left_side" value="/templates/admin_leftside.jsp"/>
+		<put-attribute name="right_side" value="/templates/admin_rightside.jsp"/>
+		<put-attribute name="footer" value="/templates/admin_footer.jsp" />
+	</definition>
+	
+	<definition name="admin" extends="adminCommon">
+		<put-attribute name="title" value="Admin" />
+		<put-attribute name="body" value="/admin/index.jsp" />
+	</definition>
+	<!-- Orders -->
+	<definition name="mg_orders" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách đơn hàng" />
+		<put-attribute name="body" value="/admin/pages/order/orders.jsp" />
+	</definition>
+	<definition name="edit_order" extends="adminCommon">
+		<put-attribute name="title" value="Đơn hàng" />
+		<put-attribute name="body" value="/admin/pages/order/edit_order.jsp" />
+	</definition>
+	<definition name="detail_orders" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách sản phẩm đã đặt" />
+		<put-attribute name="body" value="/admin/pages/order/detail_orders.jsp" />
+	</definition>
+	<!-- Cate -->
+	<definition name="mg_cates" extends="adminCommon">
+		<put-attribute name="title" value="Thể loại" />
+		<put-attribute name="body" value="/admin/pages/cate/cates.jsp" />
+	</definition>
+	<definition name="edit_cate" extends="adminCommon">
+		<put-attribute name="title" value="Xem/Sửa thể loại" />
+		<put-attribute name="body" value="/admin/pages/cate/edit_cate.jsp" />
+	</definition>
+	
+	<definition name="mg_products" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách sản phẩm" />
+		<put-attribute name="body" value="/admin/pages/products.jsp" />
+	</definition>
+	<!-- promotion -->
+	<definition name="mg_promotions" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách đợt khuyến mãi" />
+		<put-attribute name="body" value="/admin/pages/promotion/promotions.jsp" />
+	</definition>
+	<definition name="view_promotion" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách khuyến mãi" />
+		<put-attribute name="body" value="/admin/pages/promotion/promotion.jsp" />
+	</definition>
+	<definition name="promotion_detail" extends="adminCommon">
+		<put-attribute name="title" value="Chi tiết khuyến mãi" />
+		<put-attribute name="body" value="/admin/pages/promotion/edit_promotion_detail.jsp" />
+	</definition>
+	<definition name="promotion" extends="adminCommon">
+		<put-attribute name="title" value="Thêm đợt khuyến mãi" />
+		<put-attribute name="body" value="/admin/pages/promotion/edit_promotion.jsp" />
+	</definition>
+	<!-- end -->
+	
+	<definition name="mg_regUsers" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách người dùng đăng ký nhận tin" />
+		<put-attribute name="body" value="/admin/pages/regs.jsp" />
+	</definition>
+	
+	<definition name="mg_users" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách thành viên" />
+		<put-attribute name="body" value="/admin/pages/user/users.jsp" />
+	</definition>
+	<definition name="edit_user" extends="adminCommon">
+		<put-attribute name="title" value="Thành viên" />
+		<put-attribute name="body" value="/admin/pages/user/edit_user.jsp" />
+	</definition>
+	<!-- Contact -->
+	<definition name="mg_contacts" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách phản hồi" />
+		<put-attribute name="body" value="/admin/pages/contact/contacts.jsp" />
+	</definition>
+	<definition name="edit_contact" extends="adminCommon">
+		<put-attribute name="title" value="Nội dung phản hồi" />
+		<put-attribute name="body" value="/admin/pages/contact/edit_contact.jsp" />
+	</definition>
+	<!-- Advertiment -->
+	<definition name="mg_adverts" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách quảng cáo" />
+		<put-attribute name="body" value="/admin/pages/advert/adverts.jsp" />
+	</definition>
+	<definition name="edit_advert" extends="adminCommon">
+		<put-attribute name="title" value="Quảng cáo" />
+		<put-attribute name="body" value="/admin/pages/advert/edit_advert.jsp" />
+	</definition>
+	<!-- Post -->
+	<definition name="mg_posts" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách bài viết" />
+		<put-attribute name="body" value="/admin/pages/post/posts.jsp" />
+	</definition>
+	<definition name="edit_post" extends="adminCommon">
+		<put-attribute name="title" value="Bài viết" />
+		<put-attribute name="body" value="/admin/pages/post/edit_post.jsp" />
+	</definition>
+	
+<!-- 	<definition name="common" template="/client/templates/template.jsp"> -->
+<!-- 		<put-attribute name="header" value="/client/templates/header.jsp"/> -->
+<!-- 		<put-attribute name="rightside" value="/client/templates/rightside.jsp"/> -->
+<!-- 		<put-attribute name="footer" value="/client/templates/footer.jsp" /> -->
+<!-- 	</definition> -->
+
+<!-- 	<definition name="index" extends="common"> -->
+<!-- 		<put-attribute name="title" value="Trang chủ" /> -->
+<!-- 		<put-attribute name="topside" value="/client/templates/topside.jsp"/> -->
+<!-- 		<put-attribute name="body" value="/client/pages/index.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="reviews" extends="common"> -->
+<!-- 		<put-attribute name="topside" value=""/> -->
+<!-- 		<put-attribute name="title" value="View" /> -->
+<!-- 		<put-attribute name="body" value="/client/pages/reviews.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="contact" extends="common"> -->
+<!-- 		<put-attribute name="topside" value=""/> -->
+<!-- 		<put-attribute name="title" value="Liên hệ" /> -->
+<!-- 		<put-attribute name="body" value="/client/pages/contact.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="profile" extends="common"> -->
+<!-- 		<put-attribute name="topside" value=""/> -->
+<!-- 		<put-attribute name="title" value="Thông tin người dùng" /> -->
+<!-- 		<put-attribute name="body" value="/client/pages/profile.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="single" extends="common"> -->
+<!-- 		<put-attribute name="topside" value=""/> -->
+<!-- 		<put-attribute name="title" value="Single" /> -->
+<!-- 		<put-attribute name="body" value="/client/pages/single.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="viewPostByUrl" template="/client/pages/post.jsp"></definition> -->
+	
+<!-- 	<definition name="login" template="/login.jsp"></definition> -->
+<!-- 	<definition name="register" template="/client/pages/register.jsp"></definition> -->
+<!-- 	<definition name="changePass" template="/client/pages/changePass.jsp"></definition> -->
+	
+<!-- 	<definition name="AdminCommon" template="/admin/templates/template.jsp"> -->
+<!-- 		<put-attribute name="header" value="/admin/templates/header.jsp"/> -->
+<!-- 		<put-attribute name="sidebar" value="/admin/templates/leftside.jsp"/> -->
+<!-- 		<put-attribute name="footer" value="/admin/templates/footer.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="admin" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Admin" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/index.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="rsschannel" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Admin" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/rsschannel.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="allRSS" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Danh sách RSS đã đăng ký" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/listrss.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminCates" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Danh sách thể loại (menu)" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/categories.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminEditCates" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Danh sách thể loại (menu)" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/edit-category.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="members" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Danh sách người dùng" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/mems.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminEditMem" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Danh sách người dùng" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/edit-mems.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminPosts" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Danh sách người dùng" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/posts.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminWritePost" extends="AdminCommon"> -->
+<!-- 		<put-attribute name="title" value="Viết bài" /> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/wpost.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="MailCommon" template="/admin/templates/mail.jsp"> -->
+<!-- 		<put-attribute name="header" value="/admin/templates/header.jsp"/> -->
+<!-- 		<put-attribute name="sidebar" value="/admin/templates/leftside.jsp"/> -->
+<!-- 		<put-attribute name="menu" value="/admin/templates/menu-mail.jsp"></put-attribute> -->
+<!-- 		<put-attribute name="footer" value="/admin/templates/footer.jsp" /> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminContact" extends="MailCommon"> -->
+<!-- 		<put-attribute name="title" value="Thư góp ý"></put-attribute> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/contacts.jsp"></put-attribute> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminWriteMail" extends="MailCommon"> -->
+<!-- 		<put-attribute name="title" value="Viết thư"></put-attribute> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/write-mail.jsp"></put-attribute> -->
+<!-- 	</definition> -->
+	
+<!-- 	<definition name="adminReadMail" extends="MailCommon"> -->
+<!-- 		<put-attribute name="title" value="Đọc thư"></put-attribute> -->
+<!-- 		<put-attribute name="content" value="/admin/pages/read-mail.jsp"></put-attribute> -->
+<!-- 	</definition> -->
+	
+</tiles-definitions>
