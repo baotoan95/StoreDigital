@@ -24,10 +24,6 @@
     <link href="<c:url value="/resources/admin/plugins/morris/morris.css"/>" rel="stylesheet" type="text/css" />
     <!-- jvectormap -->
     <link href="<c:url value="/resources/admin/plugins/jvectormap/jquery-jvectormap-1.2.2.css"/>" rel="stylesheet" type="text/css" />
-    <!-- Date Picker -->
-    <link href="<c:url value="/resources/admin/plugins/datepicker/datepicker3.css"/>" rel="stylesheet" type="text/css" />
-    <!-- Daterange picker -->
-    <link href="<c:url value="/resources/admin/plugins/daterangepicker/daterangepicker-bs3.css"/>" rel="stylesheet" type="text/css" />
     <!-- bootstrap wysihtml5 - text editor -->
     <link href="<c:url value="/resources/admin/plugins/bootstrap-wysihtml5/bootstrap3-wysihtml5.min.css"/>" rel="stylesheet" type="text/css" />
     <!-- Datetimeticker -->
@@ -38,7 +34,6 @@
 	<script type="text/javascript" src="<c:url value="/resources/admin/dist/js/delete.js"/>"></script>
 	<!-- CKEditor & CKFinder -->
 	<script type="text/javascript" src="<c:url value="/resources/js/ckeditor/ckeditor.js"/>"></script>
-	<script type="text/javascript" src="<c:url value="/resources/js/ckefinder/ckfinder.js"/>"></script>
     <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
