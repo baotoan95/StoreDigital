@@ -62,7 +62,7 @@ public class AdminPromotionHandler {
 		List<Promotion> listPromotion = (List<Promotion>)result.get("promotions");
 		
 		PromotionDetail pro = promotionDAO.getPromotionDetailById(id);
-		model.addAttribute("title", "MÃ£ Ä‘á»£t khuyáº¿n mÃ£i: " + promotionDAO.getPromotionById(pro.getPromotionId()).getId());
+		model.addAttribute("title", "Mã khuyến mãi: " + promotionDAO.getPromotionById(pro.getPromotionId()).getId());
 		model.addAttribute("promotionDetail", pro);
 		model.addAttribute("promotions", listPromotion);
 		model.addAttribute("action", "update");
@@ -73,14 +73,14 @@ public class AdminPromotionHandler {
 	@RequestMapping(value="/update", method = RequestMethod.GET, produces="application/x-www-form-urlencoded;charset=UTF-8") 
 	public String update(@ModelAttribute PromotionDetail promotionDetail, ModelMap model) {
 		if(promotionDAO.updatePromotionDetail(promotionDetail)) {
-			model.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng");
+			model.addAttribute("message", "Cập nhật thành công");
 		} else {
-			model.addAttribute("message", "Cáº­p nháº­t chÆ°a thÃ nh cÃ´ng");
+			model.addAttribute("message", "Cập nhật chưa thành công");
 		}
 		Map<String, Object> result = promotionDAO.getPromotions(999, 1);
 		List<Promotion> listPromotion = (List<Promotion>)result.get("promotions");
 		model.addAttribute("promotions", listPromotion);
-		model.addAttribute("title", "MÃ£ Ä‘á»£t khuyáº¿n mÃ£i: " + promotionDAO.getPromotionById(promotionDetail.getPromotionId()).getId());
+		model.addAttribute("title", "Mã khuyến mãi: " + promotionDAO.getPromotionById(promotionDetail.getPromotionId()).getId());
 		model.addAttribute("promotionDetail", promotionDetail);
 		model.addAttribute("action", "update");
 		return "promotion_detail";
@@ -93,11 +93,11 @@ public class AdminPromotionHandler {
 		
 		if(type == 1) { // add promotion
 			model.addAttribute("promotion", new Promotion());
-			model.addAttribute("title", "ThÃªm Ä‘á»£t khuyáº¿n mÃ£i");
+			model.addAttribute("title", "Thêm khuyến mãi");
 			return "promotion";
 		} else { // Add promotion detail
 			model.addAttribute("promotionDetail", new PromotionDetail());
-			model.addAttribute("title", "ThÃªm chi tiáº¿t khuyáº¿n mÃ£i");
+			model.addAttribute("title", "Thêm chi tiết khuyến mãi");
 			model.addAttribute("action", "addPromotionDetail");
 			Map<String, Object> result = promotionDAO.getPromotions(999, 1);
 			List<Promotion> listPromotion = (List<Promotion>)result.get("promotions");
@@ -109,26 +109,26 @@ public class AdminPromotionHandler {
 	@RequestMapping(value="/addPromotion", method = RequestMethod.POST)
 	public String addPromotion(@ModelAttribute Promotion promotion, @RequestParam("file") MultipartFile file ,
 			@RequestParam("imageName") String name, ModelMap model) {
-		model.addAttribute("title", "ThÃªm Ä‘á»£t khuyáº¿n mÃ£i");
+		model.addAttribute("title", "Thêm khuyến mãi");
 		model.addAttribute("promotion", new Promotion());
 		String pathStore = "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/promotions";
 		if(UploadManager.uploadFile(name, file, pathStore)) {
 			promotion.setImageUrl("/images/promotions/" + name);
 			promotionDAO.addPromotion(promotion);
-			model.addAttribute("message", "Ä�Ã£ thÃªm thÃ nh cÃ´ng");
+			model.addAttribute("message", "Thêm thành công");
 		}
 		return "promotion";
 	}
 	
 	@RequestMapping(value="/addPromotionDetail", method = RequestMethod.GET)
 	public String addPromotionDetail(@ModelAttribute PromotionDetail promotionDetail, ModelMap model) {
-		model.addAttribute("title", "ThÃªm Ä‘á»£t khuyáº¿n mÃ£i");
+		model.addAttribute("title", "Thêm khuyến mãi");
 		model.addAttribute("action", "addPromotionDetail");
 		model.addAttribute("promotionDetail", new PromotionDetail());
 		if(promotionDAO.addPromotionDetail(promotionDetail)) {
-			model.addAttribute("message", "Ä�Ã£ thÃªm thÃ nh cÃ´ng");
+			model.addAttribute("message", "Thêm thành công");
 		} else {
-			model.addAttribute("message", "KhÃ´ng thÃªm thÃ nh cÃ´ng");
+			model.addAttribute("message", "Thêm chưa thành công");
 		}
 		return "promotion_detail";
 	}

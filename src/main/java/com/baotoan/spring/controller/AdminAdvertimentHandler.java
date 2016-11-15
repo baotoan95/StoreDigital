@@ -42,7 +42,7 @@ public class AdminAdvertimentHandler {
 	@RequestMapping(value="/view/{id}/", method = RequestMethod.GET)
 	public String view(@PathVariable int id, ModelMap model) {
 		Advertiment advert = advertDAO.getadAdvertimentById(id);
-		model.addAttribute("title", "Mã quảng cáo: " + advert.getId());
+		model.addAttribute("title", "MÃ£ quáº£ng cÃ¡o: " + advert.getId());
 		model.addAttribute("advert", advert);
 		model.addAttribute("action", "updateAdvert");
 		return "edit_advert";
@@ -57,7 +57,7 @@ public class AdminAdvertimentHandler {
 			advert.setImageUrl("/images/advertiments/" + name);
 		}
 		String describe = "<li data-transition='random' data-slotamount='7' data-masterspeed='1000' data-thumb='/Demo/resources/images/advertiments/slider_img_1.html'><img src='/Demo/resources"+advert.getImageUrl()+"' data-bgposition='left top' data-bgfit='cover' data-bgrepeat='no-repeat' alt=\"banner\"/>" +
-              "<div    class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-x='15'  data-y='80'  data-endspeed='500'  data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2; white-space:nowrap;'>Phong Cách Mới</div>" +
+              "<div    class='tp-caption ExtraLargeTitle sft  tp-resizeme ' data-x='15'  data-y='80'  data-endspeed='500'  data-speed='500' data-start='1100' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:2; white-space:nowrap;'>Phong cách mới</div>" +
               "<div    class='tp-caption LargeTitle sfl  tp-resizeme ' data-x='15'  data-y='135'  data-endspeed='500'  data-speed='500' data-start='1300' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:3; white-space:nowrap;'>Giá hấp <span>dẫn</span></div>" +
               "<div    class='tp-caption sfb  tp-resizeme ' data-x='15'  data-y='360'  data-endspeed='500'  data-speed='500' data-start='1500' data-easing='Linear.easeNone' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4; white-space:nowrap;'><a href='#' class=\"view-more\">Xem Thêm</a> <a href='#' class=\"buy-btn\">Mua Ngay</a></div>" +
               "<div    class='tp-caption Title sft  tp-resizeme ' data-x='15'  data-y='230'  data-endspeed='500'  data-speed='500' data-start='1500' data-easing='Power2.easeInOut' data-splitin='none' data-splitout='none' data-elementdelay='0.1' data-endelementdelay='0.1' style='z-index:4; white-space:nowrap;'>Mua ngay còn kịp :D</div>" +
@@ -65,7 +65,7 @@ public class AdminAdvertimentHandler {
 		advert.setDescribe(describe);
 		if(advertDAO.updateAdvertiment(advert)) {
 			model.addAttribute("advert", advert);
-			model.addAttribute("message", "Cập nhật thành công");
+			model.addAttribute("message", "Cập nhật thành công!");
 		}
 		model.addAttribute("title", "Mã quảng cáo: " + advert.getId());
 		model.addAttribute("action", "updateAdvert");

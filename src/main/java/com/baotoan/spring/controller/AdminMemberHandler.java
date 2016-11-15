@@ -45,7 +45,7 @@ public class AdminMemberHandler {
 	@RequestMapping(value="/view/{mail}/", method = RequestMethod.GET)
 	public String view(@PathVariable String mail, ModelMap model) {
 		User user = userDAO.getUserByEmail(mail);
-		model.addAttribute("title", "TÃ i khoáº£n cá»§a: " + user.getName());
+		model.addAttribute("title", "Tài khoản: " + user.getName());
 		model.addAttribute("action", "updateUser");
 		model.addAttribute("user", user);
 		List<Role> listRole = new RoleDAOImpl().getAll();
@@ -55,13 +55,13 @@ public class AdminMemberHandler {
 	
 	@RequestMapping(value="/updateUser", method = RequestMethod.POST)
 	public String updateUser(@ModelAttribute("user") User user, ModelMap model) {
-		model.addAttribute("message", "Cáº­p nháº­t chÆ°a thÃ nh cÃ´ng");
+		model.addAttribute("message", "Cập nhật chưa thành công");
 		if(userDAO.updateUser(user)) {
-			model.addAttribute("title", "TÃ i khoáº£n cá»§a: " + user.getName());
+			model.addAttribute("title", "Tài khoản: " + user.getName());
 		}
 		model.addAttribute("action", "updateUser");
 		model.addAttribute("user", user);
-		model.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng");
+		model.addAttribute("message", "Cập nhật thành công");
 		List<Role> listRole = new RoleDAOImpl().getAll();
 		model.addAttribute("roles", listRole);
 		return "edit_user";
@@ -69,7 +69,7 @@ public class AdminMemberHandler {
 	
 	@RequestMapping(value="/addNew", method = RequestMethod.GET)
 	public String addNew(ModelMap model) {
-		model.addAttribute("title", "ThÃªm má»›i má»™t tÃ i khoáº£n");
+		model.addAttribute("title", "Thêm mới một tài khoản");
 		model.addAttribute("action", "addUser");
 		model.addAttribute("user", new User());
 		List<Role> listRole = new RoleDAOImpl().getAll();
@@ -80,16 +80,16 @@ public class AdminMemberHandler {
 	@RequestMapping(value="/addUser", method = RequestMethod.POST)
 	public String addUser(@Valid User user, BindingResult result, ModelMap model) {
 		model.addAttribute("action", "addUser");
-		model.addAttribute("title", "ThÃªm má»›i má»™t tÃ i khoáº£n");
+		model.addAttribute("title", "Thêm mới một tài khoản");
 		model.addAttribute("user", user);
 		List<Role> listRole = new RoleDAOImpl().getAll();
 		model.addAttribute("roles", listRole);
 		if(result.hasErrors()) {
 			return "edit_user";
 		}
-		model.addAttribute("message", "ChÆ°a thÃªm thÃ nh cÃ´ng");
+		model.addAttribute("message", "Chưa thêm thành công");
 		if(userDAO.addUser(user)) {
-			model.addAttribute("message", "Ä�Ã£ thÃªm thÃ nh cÃ´ng");
+			model.addAttribute("message", "Thêm thành công");
 		}
 
 		return "edit_user";

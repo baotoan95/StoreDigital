@@ -48,7 +48,7 @@ public class AdminPostHandler {
 		session.setAttribute("adminCurrentPage", "mngPosts");
 		
 		Post post = postDAO.getPostById(id);
-		model.addAttribute("title", "BÃ i viáº¿t sá»‘: " + post.getId());
+		model.addAttribute("title", "Bài viết: " + post.getId());
 		model.addAttribute("action", "updatePost");
 		model.addAttribute("post", post);
 		return "edit_post";
@@ -60,13 +60,13 @@ public class AdminPostHandler {
 			return "edit_post";
 		}
 		post.setPublishDate(new Date());
-		model.addAttribute("message", "Cáº­p nháº­t chÆ°a thÃ nh cÃ´ng");
+		model.addAttribute("message", "Cập nhật chưa thành công");
 		if(postDAO.updatePost(post)) {
 			model.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng");
 		}
 		model.addAttribute("post", post);
 		model.addAttribute("action", "updatePost");
-		model.addAttribute("title", "BÃ i viáº¿t sá»‘: " + post.getId());
+		model.addAttribute("title", "Bài viết: " + post.getId());
 		return "edit_post";
 	}
 	
@@ -76,7 +76,7 @@ public class AdminPostHandler {
 		
 		model.addAttribute("post", new Post());
 		model.addAttribute("action", "addPost");
-		model.addAttribute("title", "Viáº¿t bÃ i má»›i");
+		model.addAttribute("title", "Viết bài mới");
 		return "edit_post";
 	}
 	
@@ -86,13 +86,13 @@ public class AdminPostHandler {
 			return "edit_post";
 		}
 		post.setPublishDate(new Date());
-		model.addAttribute("message", "ChÆ°a Ä‘Äƒng thÃ nh cÃ´ng");
+		model.addAttribute("message", "Chưa thêm thành công");
 		if(postDAO.addPost(post)) {
-			model.addAttribute("message", "Ä�Äƒng thÃ nh cÃ´ng");
+			model.addAttribute("message", "Thêm thành công");
 		}
 		model.addAttribute("post", post);
 		model.addAttribute("action", "addPost");
-		model.addAttribute("title", "Viáº¿t bÃ i má»›i");
+		model.addAttribute("title", "Viết bài mới");
 		return "edit_post";
 	}
 	
@@ -107,9 +107,9 @@ public class AdminPostHandler {
 			if(postDAO.deletePost(id)) {
 				return "{\"status\":\"ok\"}";
 			}
-			return "{\"status\":\"ChÆ°a xÃ³a Ä‘Æ°á»£c\"}";
+			return "{\"status\":\"Error \"}";
 		} else {
-			return "{\"status\":\"KhÃ´ng Ä‘Æ°á»£c xÃ³a bÃ i nÃ y\"}";
+			return "{\"status\":\"Không được xóa bài này\"}";
 		}
 	}
 }

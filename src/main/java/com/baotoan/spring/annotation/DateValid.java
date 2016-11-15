@@ -16,7 +16,7 @@ import com.baotoan.spring.validation.DateValidation;
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface DateValid {
-	String message() default "Định dạng ngày giờ chưa đúng!";
+	String message() default "Định dạng ngày chưa đúng!";
 
 	Class<?>[] groups() default {};
 

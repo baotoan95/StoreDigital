@@ -63,21 +63,20 @@ public class Authentication {
 					session.removeAttribute("listWish");
 					return "redirect:index";
 				} else if(userAuth.getStatus().indexOf("actived") != -1 && userAuth.getStatus().length() > 7) { 
-					// NgÆ°á»�i dÃ¹ng yÃªu cáº§u nháº¯c máº­t kháº©u nhÆ°ng sau Ä‘Ã³ nhá»› láº¡i vÃ  Ä‘Äƒng nháº­p
 					userAuth.setStatus("actived");
 					userDAO.updateUser(userAuth);
 					return "login";
 				} else {
-					model.addAttribute("message", "TÃ i khoáº£n chÆ°a Ä‘Æ°á»£c kÃ­ch hoáº¡t, vui lÃ²ng kiá»ƒm tra láº¡i!");
+					model.addAttribute("message", "Tài khoản chưa được kích hoạt, vui lòng kiểm tra lại!");
 					return "login";
 				}
 			} else {
-				model.addAttribute("message", "TÃ i khoáº£n hoáº·c máº­t kháº©u chÆ°a Ä‘Ãºng!");
+				model.addAttribute("message", "Tài khoản hoặc mật khẩu chưa đúng!");
 				return "login";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("message", "TÃ i khoáº£n hoáº·c máº­t kháº©u chÆ°a Ä‘Ãºng!");
+			model.addAttribute("message", "Tài khoản hoặc mật khẩu chưa đúng!");
 			return "login";
 		}
 	}
@@ -125,10 +124,10 @@ public class Authentication {
 			user.setName("Customer");
 			user.setTel("0");
 			model.addAttribute("user", user);
-			model.addAttribute("message", "KÃ­ch hoáº¡t thÃ nh cÃ´ng, vui lÃ²ng Ä‘Äƒng nháº­p!");
+			model.addAttribute("message", "Kích hoạt thành công, bạn có thể đăng nhập ngay lúc này!");
 			return "login";
 		}
-		model.addAttribute("message", "KhÃ´ng kÃ­ch hoáº¡t Ä‘Æ°á»£c, vui lÃ²ng liÃªn há»‡ vá»›i chÃºng tÃ´i!");
+		model.addAttribute("message", "Kích hoạt chưa thành công, vui lòng kiểm tra lại hoặc liên hệ với chúng tôi!");
 		return "message";
 	}
 }

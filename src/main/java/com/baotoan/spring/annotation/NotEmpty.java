@@ -16,7 +16,7 @@ import com.baotoan.spring.validation.EmptyValidation;
 @Target({ ElementType.METHOD, ElementType.FIELD })
 @Retention(RetentionPolicy.RUNTIME)
 public @interface NotEmpty {
-	String message() default "Trường không được để trống!";
+	String message() default "Không được phép để trống!";
 
 	Class<?>[] groups() default {};
 
