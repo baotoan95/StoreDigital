@@ -12,8 +12,8 @@ import com.baotoan.spring.dao.AdvertimentDAO;
 import com.baotoan.spring.dao.AdvertimentDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.Advertiment;
-import com.baotoan.spring.entitys.Product;
+import com.baotoan.spring.entities.Advertiment;
+import com.baotoan.spring.entities.Product;
 import com.baotoan.spring.utils.Constant;
 
 @Controller

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Order;
+import com.baotoan.spring.entities.Order;
 
 public class OrderMapper implements RowMapper<Order> {
 

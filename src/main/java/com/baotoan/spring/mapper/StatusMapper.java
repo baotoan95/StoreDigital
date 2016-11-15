@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Status;
+import com.baotoan.spring.entities.Status;
 
 public class StatusMapper implements RowMapper<Status> {
 

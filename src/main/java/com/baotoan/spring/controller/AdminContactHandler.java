@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baotoan.spring.dao.ContactDAO;
 import com.baotoan.spring.dao.ContactDAOImpl;
-import com.baotoan.spring.entitys.Contact;
+import com.baotoan.spring.entities.Contact;
 
 @Controller
 @RequestMapping("/mngContacts")

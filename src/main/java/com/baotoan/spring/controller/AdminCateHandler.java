@@ -20,7 +20,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.baotoan.spring.dao.MenuCateDAO;
 import com.baotoan.spring.dao.MenuCateDAOImpl;
-import com.baotoan.spring.entitys.MenuCate;
+import com.baotoan.spring.entities.MenuCate;
 import com.baotoan.spring.utils.UploadManager;
 
 @Controller

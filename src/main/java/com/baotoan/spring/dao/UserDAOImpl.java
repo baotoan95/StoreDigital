@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.baotoan.spring.entitys.User;
+import com.baotoan.spring.entities.User;
 import com.baotoan.spring.mapper.UserMapper;
 import com.baotoan.spring.utils.Pagination;
 

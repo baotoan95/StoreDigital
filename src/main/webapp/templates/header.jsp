@@ -1,6 +1,6 @@
-<%@page import="com.baotoan.spring.entitys.Search"%>
+<%@page import="com.baotoan.spring.entities.Search"%>
 <%@page import="com.baotoan.spring.dao.ProductDAO"%>
-<%@page import="com.baotoan.spring.entitys.MenuCate"%>
+<%@page import="com.baotoan.spring.entities.MenuCate"%>
 <%@page import="java.util.List"%>
 <%@page import="com.baotoan.spring.dao.MenuCateDAOImpl"%>
 <%@page import="com.baotoan.spring.dao.MenuCateDAO"%>

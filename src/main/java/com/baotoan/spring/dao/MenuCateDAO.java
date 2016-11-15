@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.MenuCate;
+import com.baotoan.spring.entities.MenuCate;
 
 public interface MenuCateDAO {
 	public boolean addMenuCate(MenuCate menuCate);

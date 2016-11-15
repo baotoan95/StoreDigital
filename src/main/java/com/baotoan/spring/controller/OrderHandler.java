@@ -18,11 +18,11 @@ import com.baotoan.spring.dao.OrderDAO;
 import com.baotoan.spring.dao.OrderDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.Cart;
-import com.baotoan.spring.entitys.DetailOrder;
-import com.baotoan.spring.entitys.Order;
-import com.baotoan.spring.entitys.Product;
-import com.baotoan.spring.entitys.User;
+import com.baotoan.spring.entities.Cart;
+import com.baotoan.spring.entities.DetailOrder;
+import com.baotoan.spring.entities.Order;
+import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.entities.User;
 
 @Controller
 public class OrderHandler {

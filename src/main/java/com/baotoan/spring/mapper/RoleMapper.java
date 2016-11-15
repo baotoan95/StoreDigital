@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Role;
+import com.baotoan.spring.entities.Role;
 
 public class RoleMapper implements RowMapper<Role> {
 

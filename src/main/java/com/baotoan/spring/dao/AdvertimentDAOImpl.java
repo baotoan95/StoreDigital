@@ -4,7 +4,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.baotoan.spring.entitys.Advertiment;
+import com.baotoan.spring.entities.Advertiment;
 import com.baotoan.spring.mapper.AdvertimentMapper;
 import com.baotoan.spring.utils.Pagination;
 

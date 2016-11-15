@@ -4,8 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-import com.baotoan.spring.entitys.Promotion;
-import com.baotoan.spring.entitys.PromotionDetail;
+import com.baotoan.spring.entities.Promotion;
+import com.baotoan.spring.entities.PromotionDetail;
 import com.baotoan.spring.mapper.PromotionDetailMapper;
 import com.baotoan.spring.mapper.PromotionMapper;
 import com.baotoan.spring.utils.Pagination;

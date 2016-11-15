@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Wish;
+import com.baotoan.spring.entities.Wish;
 
 public interface WishDAO {
 	public boolean addWish(Wish wish);

@@ -17,8 +17,8 @@ import com.baotoan.spring.dao.UserDAO;
 import com.baotoan.spring.dao.UserDAOImpl;
 import com.baotoan.spring.dao.WishDAO;
 import com.baotoan.spring.dao.WishDAOImpl;
-import com.baotoan.spring.entitys.User;
-import com.baotoan.spring.entitys.Wish;
+import com.baotoan.spring.entities.User;
+import com.baotoan.spring.entities.Wish;
 import com.baotoan.spring.service.Mailer;
 import com.baotoan.spring.utils.GenerateCode;
 
@@ -63,21 +63,21 @@ public class Authentication {
 					session.removeAttribute("listWish");
 					return "redirect:index";
 				} else if(userAuth.getStatus().indexOf("actived") != -1 && userAuth.getStatus().length() > 7) { 
-					// Người dùng yêu cầu nhắc mật khẩu nhưng sau đó nhớ lại và đăng nhập
+					// NgÆ°á»�i dÃ¹ng yÃªu cáº§u nháº¯c máº­t kháº©u nhÆ°ng sau Ä‘Ã³ nhá»› láº¡i vÃ  Ä‘Äƒng nháº­p
 					userAuth.setStatus("actived");
 					userDAO.updateUser(userAuth);
 					return "login";
 				} else {
-					model.addAttribute("message", "Tài khoản chưa được kích hoạt, vui lòng kiểm tra lại!");
+					model.addAttribute("message", "TÃ i khoáº£n chÆ°a Ä‘Æ°á»£c kÃ­ch hoáº¡t, vui lÃ²ng kiá»ƒm tra láº¡i!");
 					return "login";
 				}
 			} else {
-				model.addAttribute("message", "Tài khoản hoặc mật khẩu chưa đúng!");
+				model.addAttribute("message", "TÃ i khoáº£n hoáº·c máº­t kháº©u chÆ°a Ä‘Ãºng!");
 				return "login";
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
-			model.addAttribute("message", "Tài khoản hoặc mật khẩu chưa đúng!");
+			model.addAttribute("message", "TÃ i khoáº£n hoáº·c máº­t kháº©u chÆ°a Ä‘Ãºng!");
 			return "login";
 		}
 	}
@@ -107,14 +107,14 @@ public class Authentication {
 		String code = GenerateCode.generate(10);
 		user.setStatus(code);
 		if(userDAO.addUser(user)) {
-			String message = "Cảm  ơn bạn đã sử dụng dịch vụ của chúng tôi!\nNhấn vào link sau để kích hoạt tài khoản:\n"
+			String message = "Cáº£m  Æ¡n báº¡n Ä‘Ã£ sá»­ dá»¥ng dá»‹ch vá»¥ cá»§a chÃºng tÃ´i!\nNháº¥n vÃ o link sau Ä‘á»ƒ kÃ­ch hoáº¡t tÃ i khoáº£n:\n"
 					+ "http://localhost:8080/StoreDigital/ac?c=" + code;
-			if(mailer.sender(new String[] {user.getMail()}, "Kích hoạt tài khoản StoreDigital", message)) {
-				model.addAttribute("message", "Đăng ký thành công, vui lòng kiểm tra email để kích hoạt tài khoản");
+			if(mailer.sender(new String[] {user.getMail()}, "KÃ­ch hoáº¡t tÃ i khoáº£n StoreDigital", message)) {
+				model.addAttribute("message", "Ä�Äƒng kÃ½ thÃ nh cÃ´ng, vui lÃ²ng kiá»ƒm tra email Ä‘á»ƒ kÃ­ch hoáº¡t tÃ i khoáº£n");
 				return "login";
 			}
 		}
-		model.addAttribute("message", "Email đã có người sử dụng, vui lòng kiểm tra lại");
+		model.addAttribute("message", "Email Ä‘Ã£ cÃ³ ngÆ°á»�i sá»­ dá»¥ng, vui lÃ²ng kiá»ƒm tra láº¡i");
 		return "registry";
 	}
 	
@@ -125,10 +125,10 @@ public class Authentication {
 			user.setName("Customer");
 			user.setTel("0");
 			model.addAttribute("user", user);
-			model.addAttribute("message", "Kích hoạt thành công, vui lòng đăng nhập!");
+			model.addAttribute("message", "KÃ­ch hoáº¡t thÃ nh cÃ´ng, vui lÃ²ng Ä‘Äƒng nháº­p!");
 			return "login";
 		}
-		model.addAttribute("message", "Không kích hoạt được, vui lòng liên hệ với chúng tôi!");
+		model.addAttribute("message", "KhÃ´ng kÃ­ch hoáº¡t Ä‘Æ°á»£c, vui lÃ²ng liÃªn há»‡ vá»›i chÃºng tÃ´i!");
 		return "message";
 	}
 }

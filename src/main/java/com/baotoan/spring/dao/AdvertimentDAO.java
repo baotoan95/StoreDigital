@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.Map;
 
-import com.baotoan.spring.entitys.Advertiment;
+import com.baotoan.spring.entities.Advertiment;
 
 public interface AdvertimentDAO {
 	public boolean addAdvertiment(Advertiment advertiment);

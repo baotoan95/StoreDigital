@@ -3,9 +3,9 @@ package com.baotoan.spring.service;
 import java.util.List;
 import java.util.Map;
 
-import com.baotoan.spring.entitys.DetailProduct;
-import com.baotoan.spring.entitys.DetailProductGroup;
-import com.baotoan.spring.entitys.Product;
+import com.baotoan.spring.entities.DetailProduct;
+import com.baotoan.spring.entities.DetailProductGroup;
+import com.baotoan.spring.entities.Product;
 
 public interface ProductService {
 	public boolean addProduct(Product product);

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Promotion;
+import com.baotoan.spring.entities.Promotion;
 
 public class PromotionMapper implements RowMapper<Promotion> {
 

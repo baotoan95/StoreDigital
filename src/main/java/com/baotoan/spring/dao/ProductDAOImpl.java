@@ -5,10 +5,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
-import com.baotoan.spring.entitys.DetailProduct;
-import com.baotoan.spring.entitys.DetailProductGroup;
-import com.baotoan.spring.entitys.MenuCate;
-import com.baotoan.spring.entitys.Product;
+import com.baotoan.spring.entities.DetailProduct;
+import com.baotoan.spring.entities.DetailProductGroup;
+import com.baotoan.spring.entities.MenuCate;
+import com.baotoan.spring.entities.Product;
 import com.baotoan.spring.mapper.DetailProductGroupMapper;
 import com.baotoan.spring.mapper.DetailProductMapper;
 import com.baotoan.spring.mapper.MenuCateMapper;

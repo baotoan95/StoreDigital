@@ -20,8 +20,8 @@ import com.baotoan.spring.dao.OrderDAO;
 import com.baotoan.spring.dao.OrderDAOImpl;
 import com.baotoan.spring.dao.UserDAO;
 import com.baotoan.spring.dao.UserDAOImpl;
-import com.baotoan.spring.entitys.Order;
-import com.baotoan.spring.entitys.User;
+import com.baotoan.spring.entities.Order;
+import com.baotoan.spring.entities.User;
 import com.baotoan.spring.service.Mailer;
 import com.baotoan.spring.utils.GenerateCode;
 

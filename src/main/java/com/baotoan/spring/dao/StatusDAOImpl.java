@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Status;
+import com.baotoan.spring.entities.Status;
 import com.baotoan.spring.mapper.StatusMapper;
 
 public class StatusDAOImpl extends BaseDAO implements StatusDAO {

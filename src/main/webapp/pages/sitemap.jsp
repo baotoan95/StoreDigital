@@ -1,6 +1,6 @@
 <%@page import="com.baotoan.spring.dao.MenuCateDAOImpl"%>
 <%@page import="com.baotoan.spring.dao.MenuCateDAO"%>
-<%@page import="com.baotoan.spring.entitys.MenuCate"%>
+<%@page import="com.baotoan.spring.entities.MenuCate"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

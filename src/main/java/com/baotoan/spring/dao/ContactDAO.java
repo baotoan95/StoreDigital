@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.Map;
 
-import com.baotoan.spring.entitys.Contact;
+import com.baotoan.spring.entities.Contact;
 
 public interface ContactDAO {
 	public boolean addContact(Contact contact);

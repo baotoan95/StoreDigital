@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Image;
+import com.baotoan.spring.entities.Image;
 
 public interface ImageDAO {
 	public boolean addImage(Image image);

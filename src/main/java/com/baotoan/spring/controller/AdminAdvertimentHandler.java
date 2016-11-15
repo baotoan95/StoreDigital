@@ -17,7 +17,7 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.baotoan.spring.dao.AdvertimentDAO;
 import com.baotoan.spring.dao.AdvertimentDAOImpl;
-import com.baotoan.spring.entitys.Advertiment;
+import com.baotoan.spring.entities.Advertiment;
 import com.baotoan.spring.utils.UploadManager;
 
 @Controller

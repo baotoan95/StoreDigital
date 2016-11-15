@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.Product;
+import com.baotoan.spring.entities.Product;
 import com.baotoan.spring.utils.Constant;
 
 @Controller

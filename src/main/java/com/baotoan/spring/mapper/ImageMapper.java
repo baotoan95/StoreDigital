@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Image;
+import com.baotoan.spring.entities.Image;
 
 public class ImageMapper implements RowMapper<Image> {
 

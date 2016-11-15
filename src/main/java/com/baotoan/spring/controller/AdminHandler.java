@@ -17,7 +17,7 @@ import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.dao.UserDAO;
 import com.baotoan.spring.dao.UserDAOImpl;
-import com.baotoan.spring.entitys.User;
+import com.baotoan.spring.entities.User;
 
 @Controller
 public class AdminHandler {

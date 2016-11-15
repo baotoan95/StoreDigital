@@ -24,12 +24,12 @@ import com.baotoan.spring.dao.PaymentDAO;
 import com.baotoan.spring.dao.PaymentDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.Cart;
-import com.baotoan.spring.entitys.DetailOrder;
-import com.baotoan.spring.entitys.Order;
-import com.baotoan.spring.entitys.Payment;
-import com.baotoan.spring.entitys.Product;
-import com.baotoan.spring.entitys.User;
+import com.baotoan.spring.entities.Cart;
+import com.baotoan.spring.entities.DetailOrder;
+import com.baotoan.spring.entities.Order;
+import com.baotoan.spring.entities.Payment;
+import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.entities.User;
 import com.baotoan.spring.utils.Constant;
 import com.baotoan.spring.utils.GenerateCode;
 
@@ -111,7 +111,7 @@ public class CartHandler {
 		List<Cart> listCart = (List<Cart>)cartInfor.get("listCart");
 		if(id == -1) {
 			listCart.removeAll(listCart);
-			cartInfor.put("message", "Bỏ giỏ hàng");
+			cartInfor.put("message", "Bá»� giá»� hÃ ng");
 		} else {
 			for(int i = 0; i < listCart.size(); i++) {
 				if(listCart.get(i).getId() == id) {
@@ -210,7 +210,7 @@ public class CartHandler {
 		}
 		orderDAO.addOrder(order);
 		
-		// Cập nhật danh sách chi tiết cho đơn hàng
+		// Cáº­p nháº­t danh sÃ¡ch chi tiáº¿t cho Ä‘Æ¡n hÃ ng
 		int totalPay = 0;
 		if(null != listCart) {
 			for(Cart cart : listCart) {
@@ -218,15 +218,15 @@ public class CartHandler {
 				orderDAO.addDetailOrder(new DetailOrder(0, cart.getId(), cart.getQuantity(), cart.getTotalPay(), order.getId()));
 			}
 		}
-		// Cập nhật totalPay cho đơn hàng
+		// Cáº­p nháº­t totalPay cho Ä‘Æ¡n hÃ ng
 		order.setTotalPay(totalPay);
 		orderDAO.updateOrder(order);
-		// Nếu đơn hàng không có (không cập nhập đc) chi tiết thì xóa
+		// Náº¿u Ä‘Æ¡n hÃ ng khÃ´ng cÃ³ (khÃ´ng cáº­p nháº­p Ä‘c) chi tiáº¿t thÃ¬ xÃ³a
 		if(orderDAO.getDetailOrdersByOrderId(order.getId()).size() == 0) {
 			orderDAO.deleteOrder(order.getId());
 		}
 		updateCartInfor(cartInfor, listCart);
-		model.addAttribute("message", "Gửi đơn hàng thành công, cảm ơn bạn!");
+		model.addAttribute("message", "Gá»­i Ä‘Æ¡n hÃ ng thÃ nh cÃ´ng, cáº£m Æ¡n báº¡n!");
 		return "shopping_cart";
 	}
 }

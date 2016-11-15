@@ -15,9 +15,9 @@ import com.baotoan.spring.dao.ImageDAO;
 import com.baotoan.spring.dao.ImageDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.Image;
-import com.baotoan.spring.entitys.Product;
-import com.baotoan.spring.entitys.Search;
+import com.baotoan.spring.entities.Image;
+import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.entities.Search;
 import com.baotoan.spring.utils.Constant;
 
 @Controller

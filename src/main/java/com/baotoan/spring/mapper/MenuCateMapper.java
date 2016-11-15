@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.MenuCate;
+import com.baotoan.spring.entities.MenuCate;
 
 public class MenuCateMapper implements RowMapper<MenuCate> {
 

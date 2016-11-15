@@ -17,8 +17,8 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.baotoan.spring.dao.PromotionDAO;
 import com.baotoan.spring.dao.PromotionDAOImpl;
-import com.baotoan.spring.entitys.Promotion;
-import com.baotoan.spring.entitys.PromotionDetail;
+import com.baotoan.spring.entities.Promotion;
+import com.baotoan.spring.entities.PromotionDetail;
 import com.baotoan.spring.utils.UploadManager;
 
 @Controller
@@ -62,7 +62,7 @@ public class AdminPromotionHandler {
 		List<Promotion> listPromotion = (List<Promotion>)result.get("promotions");
 		
 		PromotionDetail pro = promotionDAO.getPromotionDetailById(id);
-		model.addAttribute("title", "Mã đợt khuyến mãi: " + promotionDAO.getPromotionById(pro.getPromotionId()).getId());
+		model.addAttribute("title", "MÃ£ Ä‘á»£t khuyáº¿n mÃ£i: " + promotionDAO.getPromotionById(pro.getPromotionId()).getId());
 		model.addAttribute("promotionDetail", pro);
 		model.addAttribute("promotions", listPromotion);
 		model.addAttribute("action", "update");
@@ -73,14 +73,14 @@ public class AdminPromotionHandler {
 	@RequestMapping(value="/update", method = RequestMethod.GET, produces="application/x-www-form-urlencoded;charset=UTF-8") 
 	public String update(@ModelAttribute PromotionDetail promotionDetail, ModelMap model) {
 		if(promotionDAO.updatePromotionDetail(promotionDetail)) {
-			model.addAttribute("message", "Cập nhật thành công");
+			model.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng");
 		} else {
-			model.addAttribute("message", "Cập nhật chưa thành công");
+			model.addAttribute("message", "Cáº­p nháº­t chÆ°a thÃ nh cÃ´ng");
 		}
 		Map<String, Object> result = promotionDAO.getPromotions(999, 1);
 		List<Promotion> listPromotion = (List<Promotion>)result.get("promotions");
 		model.addAttribute("promotions", listPromotion);
-		model.addAttribute("title", "Mã đợt khuyến mãi: " + promotionDAO.getPromotionById(promotionDetail.getPromotionId()).getId());
+		model.addAttribute("title", "MÃ£ Ä‘á»£t khuyáº¿n mÃ£i: " + promotionDAO.getPromotionById(promotionDetail.getPromotionId()).getId());
 		model.addAttribute("promotionDetail", promotionDetail);
 		model.addAttribute("action", "update");
 		return "promotion_detail";
@@ -93,11 +93,11 @@ public class AdminPromotionHandler {
 		
 		if(type == 1) { // add promotion
 			model.addAttribute("promotion", new Promotion());
-			model.addAttribute("title", "Thêm đợt khuyến mãi");
+			model.addAttribute("title", "ThÃªm Ä‘á»£t khuyáº¿n mÃ£i");
 			return "promotion";
 		} else { // Add promotion detail
 			model.addAttribute("promotionDetail", new PromotionDetail());
-			model.addAttribute("title", "Thêm chi tiết khuyến mãi");
+			model.addAttribute("title", "ThÃªm chi tiáº¿t khuyáº¿n mÃ£i");
 			model.addAttribute("action", "addPromotionDetail");
 			Map<String, Object> result = promotionDAO.getPromotions(999, 1);
 			List<Promotion> listPromotion = (List<Promotion>)result.get("promotions");
@@ -109,26 +109,26 @@ public class AdminPromotionHandler {
 	@RequestMapping(value="/addPromotion", method = RequestMethod.POST)
 	public String addPromotion(@ModelAttribute Promotion promotion, @RequestParam("file") MultipartFile file ,
 			@RequestParam("imageName") String name, ModelMap model) {
-		model.addAttribute("title", "Thêm đợt khuyến mãi");
+		model.addAttribute("title", "ThÃªm Ä‘á»£t khuyáº¿n mÃ£i");
 		model.addAttribute("promotion", new Promotion());
 		String pathStore = "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/promotions";
 		if(UploadManager.uploadFile(name, file, pathStore)) {
 			promotion.setImageUrl("/images/promotions/" + name);
 			promotionDAO.addPromotion(promotion);
-			model.addAttribute("message", "Đã thêm thành công");
+			model.addAttribute("message", "Ä�Ã£ thÃªm thÃ nh cÃ´ng");
 		}
 		return "promotion";
 	}
 	
 	@RequestMapping(value="/addPromotionDetail", method = RequestMethod.GET)
 	public String addPromotionDetail(@ModelAttribute PromotionDetail promotionDetail, ModelMap model) {
-		model.addAttribute("title", "Thêm đợt khuyến mãi");
+		model.addAttribute("title", "ThÃªm Ä‘á»£t khuyáº¿n mÃ£i");
 		model.addAttribute("action", "addPromotionDetail");
 		model.addAttribute("promotionDetail", new PromotionDetail());
 		if(promotionDAO.addPromotionDetail(promotionDetail)) {
-			model.addAttribute("message", "Đã thêm thành công");
+			model.addAttribute("message", "Ä�Ã£ thÃªm thÃ nh cÃ´ng");
 		} else {
-			model.addAttribute("message", "Không thêm thành công");
+			model.addAttribute("message", "KhÃ´ng thÃªm thÃ nh cÃ´ng");
 		}
 		return "promotion_detail";
 	}

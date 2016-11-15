@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.DetailProduct;
+import com.baotoan.spring.entities.DetailProduct;
 
 public class DetailProductMapper implements RowMapper<DetailProduct> {
 

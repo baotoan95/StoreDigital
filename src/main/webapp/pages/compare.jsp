@@ -1,8 +1,8 @@
-<%@page import="com.baotoan.spring.entitys.DetailProduct"%>
+<%@page import="com.baotoan.spring.entities.DetailProduct"%>
 <%@page import="java.util.Map"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
-<%@page import="com.baotoan.spring.entitys.Product"%>
+<%@page import="com.baotoan.spring.entities.Product"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>

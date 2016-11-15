@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Wish;
+import com.baotoan.spring.entities.Wish;
 
 public class WishMapper implements RowMapper<Wish> {
 

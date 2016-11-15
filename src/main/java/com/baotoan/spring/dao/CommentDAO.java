@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Comment;
+import com.baotoan.spring.entities.Comment;
 
 public interface CommentDAO {
 	public boolean addComment(Comment comment);

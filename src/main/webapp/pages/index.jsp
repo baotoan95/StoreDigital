@@ -1,9 +1,9 @@
 
-<%@page import="com.baotoan.spring.entitys.Advertiment"%>
+<%@page import="com.baotoan.spring.entities.Advertiment"%>
 <%@page import="com.baotoan.spring.dao.ImageDAOImpl"%>
 <%@page import="com.baotoan.spring.dao.ImageDAO"%>
-<%@page import="com.baotoan.spring.entitys.Image"%>
-<%@page import="com.baotoan.spring.entitys.Product"%>
+<%@page import="com.baotoan.spring.entities.Image"%>
+<%@page import="com.baotoan.spring.entities.Product"%>
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>

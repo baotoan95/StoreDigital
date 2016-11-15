@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Post;
+import com.baotoan.spring.entities.Post;
 
 public class PostMapper implements RowMapper<Post> {
 

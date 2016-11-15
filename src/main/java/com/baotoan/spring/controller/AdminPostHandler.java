@@ -21,8 +21,8 @@ import com.baotoan.spring.dao.PostDAO;
 import com.baotoan.spring.dao.PostDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.Post;
-import com.baotoan.spring.entitys.Product;
+import com.baotoan.spring.entities.Post;
+import com.baotoan.spring.entities.Product;
 
 @Controller
 @RequestMapping("/mngPosts")
@@ -48,7 +48,7 @@ public class AdminPostHandler {
 		session.setAttribute("adminCurrentPage", "mngPosts");
 		
 		Post post = postDAO.getPostById(id);
-		model.addAttribute("title", "Bài viết số: " + post.getId());
+		model.addAttribute("title", "BÃ i viáº¿t sá»‘: " + post.getId());
 		model.addAttribute("action", "updatePost");
 		model.addAttribute("post", post);
 		return "edit_post";
@@ -60,13 +60,13 @@ public class AdminPostHandler {
 			return "edit_post";
 		}
 		post.setPublishDate(new Date());
-		model.addAttribute("message", "Cập nhật chưa thành công");
+		model.addAttribute("message", "Cáº­p nháº­t chÆ°a thÃ nh cÃ´ng");
 		if(postDAO.updatePost(post)) {
-			model.addAttribute("message", "Cập nhật thành công");
+			model.addAttribute("message", "Cáº­p nháº­t thÃ nh cÃ´ng");
 		}
 		model.addAttribute("post", post);
 		model.addAttribute("action", "updatePost");
-		model.addAttribute("title", "Bài viết số: " + post.getId());
+		model.addAttribute("title", "BÃ i viáº¿t sá»‘: " + post.getId());
 		return "edit_post";
 	}
 	
@@ -76,7 +76,7 @@ public class AdminPostHandler {
 		
 		model.addAttribute("post", new Post());
 		model.addAttribute("action", "addPost");
-		model.addAttribute("title", "Viết bài mới");
+		model.addAttribute("title", "Viáº¿t bÃ i má»›i");
 		return "edit_post";
 	}
 	
@@ -86,13 +86,13 @@ public class AdminPostHandler {
 			return "edit_post";
 		}
 		post.setPublishDate(new Date());
-		model.addAttribute("message", "Chưa đăng thành công");
+		model.addAttribute("message", "ChÆ°a Ä‘Äƒng thÃ nh cÃ´ng");
 		if(postDAO.addPost(post)) {
-			model.addAttribute("message", "Đăng thành công");
+			model.addAttribute("message", "Ä�Äƒng thÃ nh cÃ´ng");
 		}
 		model.addAttribute("post", post);
 		model.addAttribute("action", "addPost");
-		model.addAttribute("title", "Viết bài mới");
+		model.addAttribute("title", "Viáº¿t bÃ i má»›i");
 		return "edit_post";
 	}
 	
@@ -107,9 +107,9 @@ public class AdminPostHandler {
 			if(postDAO.deletePost(id)) {
 				return "{\"status\":\"ok\"}";
 			}
-			return "{\"status\":\"Chưa xóa được\"}";
+			return "{\"status\":\"ChÆ°a xÃ³a Ä‘Æ°á»£c\"}";
 		} else {
-			return "{\"status\":\"Không được xóa bài này\"}";
+			return "{\"status\":\"KhÃ´ng Ä‘Æ°á»£c xÃ³a bÃ i nÃ y\"}";
 		}
 	}
 }

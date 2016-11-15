@@ -20,8 +20,8 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.DetailProduct;
-import com.baotoan.spring.entitys.Product;
+import com.baotoan.spring.entities.DetailProduct;
+import com.baotoan.spring.entities.Product;
 
 @Controller
 public class CompareHandler {

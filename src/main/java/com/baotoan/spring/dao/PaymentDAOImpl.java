@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Payment;
+import com.baotoan.spring.entities.Payment;
 import com.baotoan.spring.mapper.PaymentMapper;
 
 public class PaymentDAOImpl extends BaseDAO implements PaymentDAO {

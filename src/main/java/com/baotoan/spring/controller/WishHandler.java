@@ -18,9 +18,9 @@ import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.dao.WishDAO;
 import com.baotoan.spring.dao.WishDAOImpl;
-import com.baotoan.spring.entitys.Product;
-import com.baotoan.spring.entitys.User;
-import com.baotoan.spring.entitys.Wish;
+import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.entities.User;
+import com.baotoan.spring.entities.Wish;
 
 @Controller
 public class WishHandler {

@@ -15,8 +15,8 @@ import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baotoan.spring.dao.RegUserDAO;
 import com.baotoan.spring.dao.RegUserDAOImpl;
-import com.baotoan.spring.entitys.Emailer;
-import com.baotoan.spring.entitys.RegUser;
+import com.baotoan.spring.entities.Emailer;
+import com.baotoan.spring.entities.RegUser;
 import com.baotoan.spring.service.Mailer;
 
 @Controller

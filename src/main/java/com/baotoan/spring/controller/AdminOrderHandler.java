@@ -24,12 +24,12 @@ import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.dao.StatusDAO;
 import com.baotoan.spring.dao.StatusDAOImpl;
-import com.baotoan.spring.entitys.Cart;
-import com.baotoan.spring.entitys.DetailOrder;
-import com.baotoan.spring.entitys.Order;
-import com.baotoan.spring.entitys.Payment;
-import com.baotoan.spring.entitys.Product;
-import com.baotoan.spring.entitys.Status;
+import com.baotoan.spring.entities.Cart;
+import com.baotoan.spring.entities.DetailOrder;
+import com.baotoan.spring.entities.Order;
+import com.baotoan.spring.entities.Payment;
+import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.entities.Status;
 import com.baotoan.spring.utils.OrderConstant;
 
 @Controller

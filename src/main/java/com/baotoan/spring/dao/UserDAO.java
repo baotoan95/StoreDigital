@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.Map;
 
-import com.baotoan.spring.entitys.User;
+import com.baotoan.spring.entities.User;
 
 public interface UserDAO {
 	public boolean addUser(User user);

@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.DetailOrder;
+import com.baotoan.spring.entities.DetailOrder;
 
 public class DetailOrderMapper implements RowMapper<DetailOrder> {
 

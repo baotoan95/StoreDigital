@@ -1,12 +1,12 @@
 <%@page import="javax.xml.soap.Detail"%>
 <%@page import="java.util.Iterator"%>
 <%@page import="java.util.Set"%>
-<%@page import="com.baotoan.spring.entitys.DetailProduct"%>
+<%@page import="com.baotoan.spring.entities.DetailProduct"%>
 <%@page import="java.util.Map"%>
 <%@page import="com.baotoan.spring.dao.PostDAOImpl"%>
-<%@page import="com.baotoan.spring.entitys.Post"%>
+<%@page import="com.baotoan.spring.entities.Post"%>
 <%@page import="com.baotoan.spring.dao.PostDAO"%>
-<%@page import="com.baotoan.spring.entitys.Product"%>
+<%@page import="com.baotoan.spring.entities.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.baotoan.spring.dao.ImageDAO"%>
 <%@page import="com.baotoan.spring.dao.ImageDAOImpl"%>

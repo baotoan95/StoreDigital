@@ -5,9 +5,9 @@ import java.util.Map;
 
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDAOImpl;
-import com.baotoan.spring.entitys.DetailProduct;
-import com.baotoan.spring.entitys.DetailProductGroup;
-import com.baotoan.spring.entitys.Product;
+import com.baotoan.spring.entities.DetailProduct;
+import com.baotoan.spring.entities.DetailProductGroup;
+import com.baotoan.spring.entities.Product;
 
 public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO = new ProductDAOImpl();

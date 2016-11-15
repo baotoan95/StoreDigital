@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Advertiment;
+import com.baotoan.spring.entities.Advertiment;
 
 public class AdvertimentMapper implements RowMapper<Advertiment> {
 

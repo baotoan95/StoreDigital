@@ -3,8 +3,8 @@ package com.baotoan.spring.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.baotoan.spring.entitys.DetailOrder;
-import com.baotoan.spring.entitys.Order;
+import com.baotoan.spring.entities.DetailOrder;
+import com.baotoan.spring.entities.Order;
 
 public interface OrderDAO {
 	public boolean addOrder(Order order);

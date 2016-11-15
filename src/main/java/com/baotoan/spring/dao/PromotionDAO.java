@@ -3,8 +3,8 @@ package com.baotoan.spring.dao;
 import java.util.List;
 import java.util.Map;
 
-import com.baotoan.spring.entitys.Promotion;
-import com.baotoan.spring.entitys.PromotionDetail;
+import com.baotoan.spring.entities.Promotion;
+import com.baotoan.spring.entities.PromotionDetail;
 
 public interface PromotionDAO {
 	public boolean addPromotion(Promotion promotion);

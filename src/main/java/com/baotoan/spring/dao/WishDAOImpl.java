@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Wish;
+import com.baotoan.spring.entities.Wish;
 import com.baotoan.spring.mapper.WishMapper;
 
 public class WishDAOImpl extends BaseDAO implements WishDAO {

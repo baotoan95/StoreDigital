@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Role;
+import com.baotoan.spring.entities.Role;
 import com.baotoan.spring.mapper.RoleMapper;
 
 public class RoleDAOImpl extends BaseDAO implements RoleDAO {

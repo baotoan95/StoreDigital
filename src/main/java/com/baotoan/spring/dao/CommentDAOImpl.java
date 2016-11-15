@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
-import com.baotoan.spring.entitys.Comment;
+import com.baotoan.spring.entities.Comment;
 import com.baotoan.spring.mapper.CommentMapper;
 
 public class CommentDAOImpl extends BaseDAO implements CommentDAO {

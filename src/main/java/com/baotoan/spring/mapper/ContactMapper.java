@@ -5,7 +5,7 @@ import java.sql.SQLException;
 
 import org.springframework.jdbc.core.RowMapper;
 
-import com.baotoan.spring.entitys.Contact;
+import com.baotoan.spring.entities.Contact;
 
 public class ContactMapper implements RowMapper<Contact> {
 

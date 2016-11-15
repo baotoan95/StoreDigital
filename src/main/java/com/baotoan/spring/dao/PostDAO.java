@@ -2,7 +2,7 @@ package com.baotoan.spring.dao;
 
 import java.util.Map;
 
-import com.baotoan.spring.entitys.Post;
+import com.baotoan.spring.entities.Post;
 
 public interface PostDAO {
 	public boolean addPost(Post post);
