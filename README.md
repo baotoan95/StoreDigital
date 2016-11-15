@@ -2,11 +2,15 @@
 Web siêu thị điện máy.
 
 ## Chức năng
-- Sắp xếp sản phẩm theo thể loại.
+- Sắp xếp sản phẩm theo thể loại
 - Giỏ hàng
 - Quản lý admin
-- Đăng nhập,...
+- Đăng nhập
 - Gửi mail
+- So sánh mặt hàng
+- Quản lý users
+- Quản lý CMS
+- ...
 
 ## Công nghệ áp dụng
 - Spring (spring mvc)
