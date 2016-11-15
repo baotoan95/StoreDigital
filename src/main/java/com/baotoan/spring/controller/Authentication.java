@@ -106,14 +106,14 @@ public class Authentication {
 		String code = GenerateCode.generate(10);
 		user.setStatus(code);
 		if(userDAO.addUser(user)) {
-			String message = "Cáº£m  Æ¡n báº¡n Ä‘Ã£ sá»­ dá»¥ng dá»‹ch vá»¥ cá»§a chÃºng tÃ´i!\nNháº¥n vÃ o link sau Ä‘á»ƒ kÃ­ch hoáº¡t tÃ i khoáº£n:\n"
+			String message = "Cảm ơn bạn đã đăng kí sử dụng dịch vụ của chúng tôi!\nVui lòng nhấn vào link sau để kích hoạt tài khoản:\n"
 					+ "http://localhost:8080/StoreDigital/ac?c=" + code;
-			if(mailer.sender(new String[] {user.getMail()}, "KÃ­ch hoáº¡t tÃ i khoáº£n StoreDigital", message)) {
-				model.addAttribute("message", "Ä�Äƒng kÃ½ thÃ nh cÃ´ng, vui lÃ²ng kiá»ƒm tra email Ä‘á»ƒ kÃ­ch hoáº¡t tÃ i khoáº£n");
+			if(mailer.sender(new String[] {user.getMail()}, "Kích hoạt tài khoản StoreDigital", message)) {
+				model.addAttribute("message", "Đăng kí thành công, vui lòng kiểm tra email và kích hoạt tài khoản");
 				return "login";
 			}
 		}
-		model.addAttribute("message", "Email Ä‘Ã£ cÃ³ ngÆ°á»�i sá»­ dá»¥ng, vui lÃ²ng kiá»ƒm tra láº¡i");
+		model.addAttribute("message", "Email đã được sử dụng, vui lòng kiểm tra lại!");
 		return "registry";
 	}
 	

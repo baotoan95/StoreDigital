@@ -226,7 +226,7 @@ public class CartHandler {
 			orderDAO.deleteOrder(order.getId());
 		}
 		updateCartInfor(cartInfor, listCart);
-		model.addAttribute("message", "Gá»­i Ä‘Æ¡n hÃ ng thÃ nh cÃ´ng, cáº£m Æ¡n báº¡n!");
+		model.addAttribute("message", "Gửi đơn hàng thành công, cảm ơn bạn!");
 		return "shopping_cart";
 	}
 }

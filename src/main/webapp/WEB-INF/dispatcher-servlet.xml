@@ -11,15 +11,17 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 
 	<context:component-scan base-package="com.baotoan.spring.*" />
 	<mvc:annotation-driven />
-	
+
 	<!-- Database common -->
 	<bean id="baseDAO" class="com.baotoan.spring.dao.BaseDAO">
 		<property name="dataSource" ref="dataSource" />
 	</bean>
-	
-	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource" destroy-method="close">
+
+	<bean id="dataSource" class="org.apache.commons.dbcp.BasicDataSource"
+		destroy-method="close">
 		<property name="driverClassName" value="com.mysql.jdbc.Driver" />
-		<property name="url" value="jdbc:mysql://localhost:3306/inspirestore?useUnicode=true&amp;characterEncoding=UTF-8" />
+		<property name="url"
+			value="jdbc:mysql://localhost:3306/inspirestore?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
 		<property name="password" value="root" />
 		<property name="removeAbandoned" value="true" />
@@ -33,14 +35,15 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 		<property name="messageConverters">
 			<list>
 				<ref bean="jsonMessageConverter" />
-				<ref bean="xmlMessageConverter"/>
+				<ref bean="xmlMessageConverter" />
 			</list>
 		</property>
 	</bean>
 	<!-- Configure bean to convert JSON to POJO and vice versa -->
 	<bean id="jsonMessageConverter"
-		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter"/>
-	<bean id="xmlMessageConverter" class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter"/>
+		class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter" />
+	<bean id="xmlMessageConverter"
+		class="org.springframework.http.converter.xml.Jaxb2RootElementHttpMessageConverter" />
 
 	<!-- <bean id="viewResolver" -->
 	<bean id="tilesConfiguration"
@@ -51,10 +54,12 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 			</list>
 		</property>
 	</bean>
-	<bean id="viewResolver" class="org.springframework.web.servlet.view.UrlBasedViewResolver">
-		<property name="viewClass" value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
+	<bean id="viewResolver"
+		class="org.springframework.web.servlet.view.UrlBasedViewResolver">
+		<property name="viewClass"
+			value="org.springframework.web.servlet.view.tiles3.TilesView"></property>
 	</bean>
-	
+
 	<bean id="messageSource"
 		class="org.springframework.context.support.ReloadableResourceBundleMessageSource">
 		<property name="basename" value="messages" />

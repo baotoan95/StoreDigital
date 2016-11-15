@@ -23,13 +23,13 @@ public class RegUserHanler {
 	public String reg(@RequestParam(value="email", required = true) String email) {
 		if(!regUserDAO.isReged(email)) {
 			regUserDAO.addRegUserDAO(new RegUser(0, email));
-			if(mailer.sender(new String[] {email}, "Ä�Äƒng kÃ½ thÃ nh cÃ´ng", "Báº¡n Ä‘Ã£ Ä‘Äƒng kÃ½ nháº­n email vá»›i cÃ¡c báº£n tin má»›i nháº¥t tá»« StoreDigital")) {
-				return "{\"message\":\"Báº¡n Ä‘Ã£ Ä‘Äƒng kÃ½ thÃ nh cÃ´ng dá»‹ch vá»¥ cá»§a chÃºng tÃ´i\"}";
+			if(mailer.sender(new String[] {email}, "Đăng kí thành công", "Bạn đã đăng kí nhận email với các bản tin mới nhất từ StoreDigital")) {
+				return "{\"message\":\"Bạn đã đăng kí thành công!\"}";
 			}
 		} else {
-			return "{\"message\":\"Email Ä‘Ã£ Ä‘Æ°á»£c Ä‘Äƒng kÃ½ trÆ°á»›c Ä‘Ã¢y\"}";
+			return "{\"message\":\"Email đã được đăng kí trước đây\"}";
 		}
-		return "{\"message\":\"CÃ³ lá»—i\"}";
+		return "{\"message\":\"Có lỗi, vui lòng báo lại với chúng tôi\"}";
 	}
 	
 }
