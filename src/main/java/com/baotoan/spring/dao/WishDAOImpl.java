@@ -2,9 +2,12 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Wish;
 import com.baotoan.spring.mapper.WishMapper;
 
+@Repository("wishDAO")
 public class WishDAOImpl extends BaseDAO implements WishDAO {
 	public boolean addWish(Wish wish) {
 		String sql = "insert into wishlist(id,user,productId) values(?,?,?)";

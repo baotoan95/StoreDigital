@@ -6,6 +6,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -14,7 +15,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baotoan.spring.dao.RegUserDAO;
-import com.baotoan.spring.dao.RegUserDAOImpl;
 import com.baotoan.spring.entities.Emailer;
 import com.baotoan.spring.entities.RegUser;
 import com.baotoan.spring.service.Mailer;
@@ -22,7 +22,8 @@ import com.baotoan.spring.service.Mailer;
 @Controller
 @RequestMapping("/mngRegUsers")
 public class AdminRegUserHandler {
-	private RegUserDAO regDAO = new RegUserDAOImpl();
+	@Autowired
+	private RegUserDAO regDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/show/{currentPage}/", method = RequestMethod.GET)

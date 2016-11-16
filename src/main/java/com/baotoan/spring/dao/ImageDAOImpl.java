@@ -2,9 +2,12 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Image;
 import com.baotoan.spring.mapper.ImageMapper;
 
+@Repository("imageDAO")
 public class ImageDAOImpl extends BaseDAO implements ImageDAO {
 
 	public boolean addImage(Image image) {

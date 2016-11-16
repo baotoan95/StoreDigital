@@ -11,6 +11,7 @@ import java.util.TreeSet;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -19,13 +20,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.entities.DetailProduct;
 import com.baotoan.spring.entities.Product;
 
 @Controller
 public class CompareHandler {
-	private ProductDAO productDAO = new ProductDAOImpl();
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/addCompare", method = RequestMethod.GET)

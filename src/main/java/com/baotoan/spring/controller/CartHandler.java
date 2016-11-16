@@ -10,6 +10,7 @@ import java.util.Map;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -19,11 +20,8 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.OrderDAO;
-import com.baotoan.spring.dao.OrderDAOImpl;
 import com.baotoan.spring.dao.PaymentDAO;
-import com.baotoan.spring.dao.PaymentDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.entities.Cart;
 import com.baotoan.spring.entities.DetailOrder;
 import com.baotoan.spring.entities.Order;
@@ -35,9 +33,12 @@ import com.baotoan.spring.utils.GenerateCode;
 
 @Controller
 public class CartHandler {
-	private ProductDAO productDAO = new ProductDAOImpl();
-	private PaymentDAO paymentDAO = new PaymentDAOImpl();
-	private OrderDAO orderDAO = new OrderDAOImpl(); 
+	@Autowired
+	private ProductDAO productDAO;
+	@Autowired
+	private PaymentDAO paymentDAO;
+	@Autowired
+	private OrderDAO orderDAO; 
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/cart", method = RequestMethod.GET)

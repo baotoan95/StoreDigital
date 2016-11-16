@@ -5,6 +5,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.DetailProduct;
 import com.baotoan.spring.entities.DetailProductGroup;
 import com.baotoan.spring.entities.MenuCate;
@@ -16,6 +18,7 @@ import com.baotoan.spring.mapper.ProductMapper;
 import com.baotoan.spring.utils.Constant;
 import com.baotoan.spring.utils.Pagination;
 
+@Repository("productDAO")
 public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 	private ImageDAO imageDAO = new ImageDAOImpl();
 	

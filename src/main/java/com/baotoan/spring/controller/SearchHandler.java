@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,17 +14,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.ImageDAO;
-import com.baotoan.spring.dao.ImageDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.entities.Product;
 import com.baotoan.spring.entities.Search;
 import com.baotoan.spring.utils.Constant;
 
 @Controller
 public class SearchHandler {
-	private ProductDAO productDAO = new ProductDAOImpl();
-	private ImageDAO imageDAO = new ImageDAOImpl();
+	@Autowired
+	private ProductDAO productDAO;
+	@Autowired
+	private ImageDAO imageDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/autoComplete", method = RequestMethod.GET)

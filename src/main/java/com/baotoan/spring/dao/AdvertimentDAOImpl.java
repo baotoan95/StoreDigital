@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Advertiment;
 import com.baotoan.spring.mapper.AdvertimentMapper;
 import com.baotoan.spring.utils.Pagination;
 
+@Repository("advertimentDAO")
 public class AdvertimentDAOImpl extends BaseDAO implements AdvertimentDAO {
 
 	public boolean addAdvertiment(Advertiment advertiment) {

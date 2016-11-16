@@ -4,12 +4,15 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Promotion;
 import com.baotoan.spring.entities.PromotionDetail;
 import com.baotoan.spring.mapper.PromotionDetailMapper;
 import com.baotoan.spring.mapper.PromotionMapper;
 import com.baotoan.spring.utils.Pagination;
 
+@Repository("promotionDAO")
 public class PromotionDAOImpl extends BaseDAO implements PromotionDAO {
 
 	public boolean addPromotion(Promotion promotion) {

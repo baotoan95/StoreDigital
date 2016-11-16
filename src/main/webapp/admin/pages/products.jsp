@@ -37,7 +37,7 @@
 						<td>${product.oldPrice }</td>
 						<td>${product.newPrice }</td>
 						<td>${product.importDate }</td>
-						<td><a title="Sửa" href="#"><i class="fa fa-edit"></i></a></td>
+						<td><a title="Sửa" href="${pageContext.request.contextPath }/mngProducts/edit/${product.id}"><i class="fa fa-edit"></i></a></td>
 						<td><a title="Xóa" href="#"><i class="fa fa-trash-o"></i></a></td>
 					</tr>
 					</c:forEach>

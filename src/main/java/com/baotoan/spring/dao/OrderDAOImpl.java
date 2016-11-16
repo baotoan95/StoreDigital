@@ -4,6 +4,8 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.DetailOrder;
 import com.baotoan.spring.entities.Order;
 import com.baotoan.spring.mapper.DetailOrderMapper;
@@ -11,6 +13,7 @@ import com.baotoan.spring.mapper.OrderMapper;
 import com.baotoan.spring.utils.OrderConstant;
 import com.baotoan.spring.utils.Pagination;
 
+@Repository("orderDAO")
 public class OrderDAOImpl extends BaseDAO implements OrderDAO {
 
 	public boolean addOrder(Order order) {

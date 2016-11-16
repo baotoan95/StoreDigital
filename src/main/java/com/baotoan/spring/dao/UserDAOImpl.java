@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.User;
 import com.baotoan.spring.mapper.UserMapper;
 import com.baotoan.spring.utils.Pagination;
 
+@Repository("userDAO")
 public class UserDAOImpl extends BaseDAO implements UserDAO {
 	public boolean addUser(User user) {
 		String sql = "insert into users(mail,pass,cmnd,name,address,city,tel,score,status,role) values(?,?,?,?,?,?,?,?,?,?)";

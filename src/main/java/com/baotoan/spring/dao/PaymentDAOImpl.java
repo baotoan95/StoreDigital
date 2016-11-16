@@ -2,9 +2,12 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Payment;
 import com.baotoan.spring.mapper.PaymentMapper;
 
+@Repository("paymentDAO")
 public class PaymentDAOImpl extends BaseDAO implements PaymentDAO {
 
 	public Payment getPaymentById(int id) {

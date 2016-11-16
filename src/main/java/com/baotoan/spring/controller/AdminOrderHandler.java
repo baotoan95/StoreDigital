@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -17,13 +18,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.OrderDAO;
-import com.baotoan.spring.dao.OrderDAOImpl;
 import com.baotoan.spring.dao.PaymentDAO;
-import com.baotoan.spring.dao.PaymentDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.dao.StatusDAO;
-import com.baotoan.spring.dao.StatusDAOImpl;
 import com.baotoan.spring.entities.Cart;
 import com.baotoan.spring.entities.DetailOrder;
 import com.baotoan.spring.entities.Order;
@@ -35,10 +32,14 @@ import com.baotoan.spring.utils.OrderConstant;
 @Controller
 @RequestMapping("/mngOrders")
 public class AdminOrderHandler {
-	private OrderDAO orderDAO = new OrderDAOImpl();
-	private PaymentDAO paymentDAO = new PaymentDAOImpl();
-	private StatusDAO statusDAO = new StatusDAOImpl();
-	private ProductDAO productDAO = new ProductDAOImpl();
+	@Autowired
+	private OrderDAO orderDAO;
+	@Autowired
+	private PaymentDAO paymentDAO;
+	@Autowired
+	private StatusDAO statusDAO;
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/{type}/{currentPage}", method = RequestMethod.GET)

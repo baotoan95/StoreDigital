@@ -5,6 +5,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -16,7 +17,6 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.baotoan.spring.dao.PromotionDAO;
-import com.baotoan.spring.dao.PromotionDAOImpl;
 import com.baotoan.spring.entities.Promotion;
 import com.baotoan.spring.entities.PromotionDetail;
 import com.baotoan.spring.utils.UploadManager;
@@ -24,7 +24,8 @@ import com.baotoan.spring.utils.UploadManager;
 @Controller
 @RequestMapping("/mngPromotions")
 public class AdminPromotionHandler {
-	private PromotionDAO promotionDAO = new PromotionDAOImpl();
+	@Autowired
+	private PromotionDAO promotionDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/show/{currentPage}", method = RequestMethod.GET)

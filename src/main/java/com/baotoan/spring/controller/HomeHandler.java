@@ -3,15 +3,14 @@ package com.baotoan.spring.controller;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baotoan.spring.dao.AdvertimentDAO;
-import com.baotoan.spring.dao.AdvertimentDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.entities.Advertiment;
 import com.baotoan.spring.entities.Product;
 import com.baotoan.spring.utils.Constant;
@@ -19,8 +18,10 @@ import com.baotoan.spring.utils.Constant;
 @Controller
 @RequestMapping("/")
 public class HomeHandler {
-	private ProductDAO productDAO = new ProductDAOImpl();
-	private AdvertimentDAO adverDAO = new AdvertimentDAOImpl();
+	@Autowired
+	private ProductDAO productDAO;
+	@Autowired
+	private AdvertimentDAO adverDAO;
 
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)

@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,17 +16,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.dao.WishDAO;
-import com.baotoan.spring.dao.WishDAOImpl;
 import com.baotoan.spring.entities.Product;
 import com.baotoan.spring.entities.User;
 import com.baotoan.spring.entities.Wish;
 
 @Controller
 public class WishHandler {
-	private WishDAO wishDAO = new WishDAOImpl();
-	private ProductDAO productDAO = new ProductDAOImpl();
+	@Autowired
+	private WishDAO wishDAO;
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/addWish", method = RequestMethod.GET)

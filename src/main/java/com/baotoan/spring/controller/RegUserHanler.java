@@ -8,13 +8,13 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.RegUserDAO;
-import com.baotoan.spring.dao.RegUserDAOImpl;
 import com.baotoan.spring.entities.RegUser;
 import com.baotoan.spring.service.Mailer;
 
 @Controller
 public class RegUserHanler {
-	private RegUserDAO regUserDAO = new RegUserDAOImpl();
+	@Autowired
+	private RegUserDAO regUserDAO;
 	@Autowired
 	private Mailer mailer;
 	

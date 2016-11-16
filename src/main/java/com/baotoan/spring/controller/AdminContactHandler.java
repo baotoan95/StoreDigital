@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.propertyeditors.CustomDateEditor;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
@@ -18,13 +19,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 import com.baotoan.spring.dao.ContactDAO;
-import com.baotoan.spring.dao.ContactDAOImpl;
 import com.baotoan.spring.entities.Contact;
 
 @Controller
 @RequestMapping("/mngContacts")
 public class AdminContactHandler {
-	private ContactDAO contactDAO = new ContactDAOImpl();
+	@Autowired
+	private ContactDAO contactDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/show/{currentPage}/", method = RequestMethod.GET)

@@ -2,9 +2,12 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.MenuCate;
 import com.baotoan.spring.mapper.MenuCateMapper;
 
+@Repository("menuCateDAO")
 public class MenuCateDAOImpl extends BaseDAO implements MenuCateDAO {
 
 	public boolean addMenuCate(MenuCate menuCate) {

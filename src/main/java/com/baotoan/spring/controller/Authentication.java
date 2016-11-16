@@ -14,9 +14,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import com.baotoan.spring.dao.UserDAO;
-import com.baotoan.spring.dao.UserDAOImpl;
 import com.baotoan.spring.dao.WishDAO;
-import com.baotoan.spring.dao.WishDAOImpl;
 import com.baotoan.spring.entities.User;
 import com.baotoan.spring.entities.Wish;
 import com.baotoan.spring.service.Mailer;
@@ -24,8 +22,10 @@ import com.baotoan.spring.utils.GenerateCode;
 
 @Controller
 public class Authentication {
-	private UserDAO userDAO = new UserDAOImpl();
-	private WishDAO wishDAO = new WishDAOImpl();
+	@Autowired
+	private UserDAO userDAO;
+	@Autowired
+	private WishDAO wishDAO;
 	@Autowired
 	private Mailer mailer;
 	

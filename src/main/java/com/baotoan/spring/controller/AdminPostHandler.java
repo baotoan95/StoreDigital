@@ -7,6 +7,7 @@ import java.util.Map;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -18,17 +19,17 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.PostDAO;
-import com.baotoan.spring.dao.PostDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.entities.Post;
 import com.baotoan.spring.entities.Product;
 
 @Controller
 @RequestMapping("/mngPosts")
 public class AdminPostHandler {
-	private PostDAO postDAO = new PostDAOImpl();
-	private ProductDAO productDAO = new ProductDAOImpl();
+	@Autowired
+	private PostDAO postDAO;
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/show/{currentPage}/")

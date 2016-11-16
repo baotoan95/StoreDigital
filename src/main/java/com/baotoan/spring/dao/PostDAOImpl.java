@@ -4,10 +4,13 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Post;
 import com.baotoan.spring.mapper.PostMapper;
 import com.baotoan.spring.utils.Pagination;
 
+@Repository("postDAO")
 public class PostDAOImpl extends BaseDAO implements PostDAO {
 
 	public boolean addPost(Post post) {

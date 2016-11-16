@@ -7,6 +7,7 @@ import java.util.Map;
 
 import javax.servlet.http.HttpSession;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -15,9 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.OrderDAO;
-import com.baotoan.spring.dao.OrderDAOImpl;
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.entities.Cart;
 import com.baotoan.spring.entities.DetailOrder;
 import com.baotoan.spring.entities.Order;
@@ -26,8 +25,10 @@ import com.baotoan.spring.entities.User;
 
 @Controller
 public class OrderHandler {
-	private OrderDAO orderDAO = new OrderDAOImpl();
-	private ProductDAO productDAO = new ProductDAOImpl();
+	@Autowired
+	private OrderDAO orderDAO;
+	@Autowired
+	private ProductDAO productDAO;
 	
 	@RequestMapping(value="/dOrder", method = RequestMethod.GET)
 	public String viewOrderDetail(@RequestParam(value="id", required=true) String orderId, ModelMap model, HttpSession session) {

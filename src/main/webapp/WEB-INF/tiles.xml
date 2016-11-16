@@ -137,6 +137,11 @@
 		<put-attribute name="title" value="Danh sách sản phẩm" />
 		<put-attribute name="body" value="/admin/pages/products.jsp" />
 	</definition>
+	
+	<definition name="edit_product" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách sản phẩm" />
+		<put-attribute name="body" value="/admin/pages/edit_product.jsp" />
+	</definition>
 	<!-- promotion -->
 	<definition name="mg_promotions" extends="adminCommon">
 		<put-attribute name="title" value="Danh sách đợt khuyến mãi" />

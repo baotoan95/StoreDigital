@@ -2,9 +2,12 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Role;
 import com.baotoan.spring.mapper.RoleMapper;
 
+@Repository("roleDAO")
 public class RoleDAOImpl extends BaseDAO implements RoleDAO {
 
 	public Role getRoleById(int id) {

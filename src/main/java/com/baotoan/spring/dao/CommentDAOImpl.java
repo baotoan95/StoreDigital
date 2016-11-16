@@ -2,9 +2,12 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Comment;
 import com.baotoan.spring.mapper.CommentMapper;
 
+@Repository("commentDAO")
 public class CommentDAOImpl extends BaseDAO implements CommentDAO {
 
 	public boolean addComment(Comment comment) {

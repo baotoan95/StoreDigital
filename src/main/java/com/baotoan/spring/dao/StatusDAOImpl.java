@@ -2,9 +2,12 @@ package com.baotoan.spring.dao;
 
 import java.util.List;
 
+import org.springframework.stereotype.Repository;
+
 import com.baotoan.spring.entities.Status;
 import com.baotoan.spring.mapper.StatusMapper;
 
+@Repository("statusDAO")
 public class StatusDAOImpl extends BaseDAO implements StatusDAO {
 	public Status getStatusById(int id) {
 		String sql = "select * from status where id=?";

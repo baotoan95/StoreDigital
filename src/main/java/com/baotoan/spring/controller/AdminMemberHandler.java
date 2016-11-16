@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 import javax.validation.Valid;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.ModelMap;
 import org.springframework.validation.BindingResult;
@@ -19,14 +20,14 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.RoleDAOImpl;
 import com.baotoan.spring.dao.UserDAO;
-import com.baotoan.spring.dao.UserDAOImpl;
 import com.baotoan.spring.entities.Role;
 import com.baotoan.spring.entities.User;
 
 @Controller
 @RequestMapping("/mngMembers")
 public class AdminMemberHandler {
-	private UserDAO userDAO = new UserDAOImpl();
+	@Autowired
+	private UserDAO userDAO;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/show/{currentPage}/", method = RequestMethod.GET)
