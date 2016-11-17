@@ -38,10 +38,15 @@
               </a>
             </li>
             <li class="treeview ${sessionScope.adminCurrentPage == 'mngProducts' ? 'active' : ''}">
-              <a href="${pageContext.request.contextPath }/mngProducts/show/1/">
+              <a href="#">
                 <i class="fa fa-pie-chart"></i>
                 <span>Sản phẩm</span>
+                <i class="fa fa-angle-left pull-right"></i>
               </a>
+              <ul class="treeview-menu">
+                <li><a href="${pageContext.request.contextPath }/mngProducts/show/1/"><i class="fa fa-circle-o"></i>Tất cả</a></li>
+                <li><a href="${pageContext.request.contextPath }/mngProducts/add"><i class="fa fa-circle-o"></i>Thêm sản phẩm</a></li>
+              </ul>
             </li>
             <li class="treeview ${sessionScope.adminCurrentPage == 'mngPromotions' ? 'active' : ''}">
               <a href="#">

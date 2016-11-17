@@ -7,7 +7,8 @@
 		<br/>
 		<span style="color: red;">${requestScope.message }</span>
 	</div>
-	<form:form method="POST" id="product" modelAttribute="product" action="${pageContext.request.contextPath }/mngAdvertiments/${requestScope.action }"
+	<form:form method="POST" id="product" modelAttribute="product" 
+	action="${pageContext.request.contextPath }/mngProducts/${requestScope.action }"
 	enctype="multipart/form-data">
 		<form:hidden path="id"/>
 		<div class="box-body">
@@ -36,17 +37,23 @@
 				<form:input path="importDate" class="form-control" id="importDate"/>
 			</div>
 			<div class="form-group">
-				<label for="cateId">Thể loại</label> 
-				<form:input path="cateId" class="form-control" id="cateId"/>
+				<label for="cateId">Thể loại</label>
+				<select class="form-control" id="cateId">
+					<%= request.getAttribute("categories") %>
+				</select>
 			</div>
 			<div class="form-group">
 				<label for="describe">Mô tả</label>
 				<form:textarea path="describe" id="describe" class="form-control"/>
 			</div>
+			<div class="form-group">
+				<label for="urlImage">Ảnh đại diện</label>
+				<input type="file" name="urlImage" id="urlImage" class="form-control">
+			</div>
 		</div>
 		<div class="box-footer">
 			<button onclick="actionForm();" class="btn btn-primary">
-				Tiếp
+				Lưu và tiếp tục
 			</button>
 		</div>
 	</form:form>

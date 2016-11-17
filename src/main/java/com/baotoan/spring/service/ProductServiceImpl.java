@@ -12,7 +12,7 @@ import com.baotoan.spring.entities.Product;
 public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO = new ProductDAOImpl();
 
-	public boolean addProduct(Product product) {
+	public int addProduct(Product product) {
 		return productDAO.addProduct(product);
 	}
 

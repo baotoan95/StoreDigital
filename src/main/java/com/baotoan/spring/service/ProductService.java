@@ -8,7 +8,7 @@ import com.baotoan.spring.entities.DetailProductGroup;
 import com.baotoan.spring.entities.Product;
 
 public interface ProductService {
-	public boolean addProduct(Product product);
+	public int addProduct(Product product);
 	public boolean updateProduct(Product product);
 	public boolean deleteProduct(int id);
 	public Product getProductById(int id);

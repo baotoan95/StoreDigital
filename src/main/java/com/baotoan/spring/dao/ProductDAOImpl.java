@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.stereotype.Repository;
 
 import com.baotoan.spring.entities.DetailProduct;
@@ -22,12 +23,16 @@ import com.baotoan.spring.utils.Pagination;
 public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 	private ImageDAO imageDAO = new ImageDAOImpl();
 	
-	public boolean addProduct(Product product) {
+	public int addProduct(Product product) {
 		String sql = "insert into prods(name,old_price,new_price,views,reviews,tags,postId,promotionId,importDate,cateId,describe)"
 				+ "values(?,?,?,?,?,?,?,?,?,?)";
-		return (jdbcTemplate.update(sql, new Object[]{product.getName(), product.getOldPrice(), product.getNewPrice(),
+		GeneratedKeyHolder keyHolder = new GeneratedKeyHolder();
+		if(jdbcTemplate.update(sql, new Object[]{product.getName(), product.getOldPrice(), product.getNewPrice(),
 				product.getViews(), product.getReviews(), product.getTags(), product.getPostId(), product.getPromotionId(),
-				product.getImportDate(), product.getCateId(), product.getDescribe()}) > 0);
+				product.getImportDate(), product.getCateId(), product.getDescribe()}) > 0) {
+			return keyHolder.getKey().intValue();
+		}
+		return 0;
 	}
 
 	public boolean updateProduct(Product product) {
