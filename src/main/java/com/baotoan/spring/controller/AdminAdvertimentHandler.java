@@ -43,7 +43,7 @@ public class AdminAdvertimentHandler {
 	@RequestMapping(value="/view/{id}/", method = RequestMethod.GET)
 	public String view(@PathVariable int id, ModelMap model) {
 		Advertiment advert = advertDAO.getadAdvertimentById(id);
-		model.addAttribute("title", "MÃ£ quáº£ng cÃ¡o: " + advert.getId());
+		model.addAttribute("title", "Mã quảng cáo: " + advert.getId());
 		model.addAttribute("advert", advert);
 		model.addAttribute("action", "updateAdvert");
 		return "edit_advert";

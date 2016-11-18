@@ -13,6 +13,8 @@ public interface PromotionDAO {
 	public Promotion getPromotionById(int id);
 	public Map<String, Object> getPromotions(int numRecordPerPage, int currentPage);
 	
+	public List<Promotion> getAll();
+	
 	public boolean addPromotionDetail(PromotionDetail promotionDetail);
 	public boolean updatePromotionDetail(PromotionDetail promotionDetail);
 	public boolean deletePromotionDetail(int id);

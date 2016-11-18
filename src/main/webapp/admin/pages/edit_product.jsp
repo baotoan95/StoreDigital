@@ -13,7 +13,7 @@
 		<form:hidden path="id"/>
 		<div class="box-body">
 			<div class="form-group">
-				<label for="name">Tên</label> 
+				<label for="name">Tên</label>
 				<form:input path="name" class="form-control" id="name"/>
 			</div>
 			<div class="form-group">
@@ -25,36 +25,46 @@
 				<form:input path="newPrice" class="form-control" id="newPrice"/>
 			</div>
 			<div class="form-group">
+				<label for="tags">Tags <span>(Cách nhau mới dấu ',')</span></label> 
+				<form:input path="tags" class="form-control" id="tags"/>
+			</div>
+			<div class="form-group">
 				<label for="postId">Post ID</label> 
-				<form:input path="postId" class="form-control" id="postId"/>
+				<form:select path="postId" cssClass="form-control">
+					<c:forEach var="post" items="${posts }">
+						<option value="${post.id }">${post.title }</option>
+					</c:forEach>
+				</form:select>
 			</div>
 			<div class="form-group">
 				<label for="promotionId">Khuyến mãi</label> 
-				<form:input path="promotionId" class="form-control" id="promotionId"/>
+				<form:select path="promotionId" cssClass="form-control">
+					<c:forEach var="prom" items="${promotions }">
+						<option value="${prom.id }">${prom.name }</option>
+					</c:forEach>
+				</form:select>
 			</div>
 			<div class="form-group">
 				<label for="importDate">Ngày nhập</label> 
-				<form:input path="importDate" class="form-control" id="importDate"/>
+				<form:input path="importDate" class="form-controlb  datetimepicker_dark" id="importDate"/>
 			</div>
 			<div class="form-group">
 				<label for="cateId">Thể loại</label>
-				<select class="form-control" id="cateId">
+				<form:select class="form-control" id="cateId" path="cateId">
 					<%= request.getAttribute("categories") %>
-				</select>
+				</form:select>
 			</div>
 			<div class="form-group">
-				<label for="describe">Mô tả</label>
-				<form:textarea path="describe" id="describe" class="form-control"/>
+				<label for="description">Mô tả</label>
+				<form:textarea path="description" id="description" class="form-control"/>
 			</div>
 			<div class="form-group">
-				<label for="urlImage">Ảnh đại diện</label>
-				<input type="file" name="urlImage" id="urlImage" class="form-control">
+				<label for="avatar">Ảnh đại diện</label>
+				<input type="file" name="avatar" id="avatar" class="form-control">
 			</div>
 		</div>
 		<div class="box-footer">
-			<button onclick="actionForm();" class="btn btn-primary">
-				Lưu và tiếp tục
-			</button>
+			<input type="submit" value="Lưu và tiếp tục"/>
 		</div>
 	</form:form>
 </div>

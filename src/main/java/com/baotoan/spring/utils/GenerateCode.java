@@ -1,5 +1,6 @@
 package com.baotoan.spring.utils;
 
+import java.util.Date;
 import java.util.Random;
 
 public class GenerateCode {
@@ -16,5 +17,9 @@ public class GenerateCode {
 	
 	public static void main(String[] args) {
 		System.out.println(generate(20));
+	}
+	
+	public static String generateFileName() {
+		return new Date().toString().replaceAll(" ", "").replaceAll(":", "").concat(generate(5));
 	}
 }

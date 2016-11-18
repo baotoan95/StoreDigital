@@ -18,7 +18,7 @@ public class Product implements Serializable {
 	private int promotionId;
 	private Date importDate;
 	private int cateId;
-	private String describe;
+	private String description;
 	// Addition
 	private String urlImage;
 	private List<Image> listImage;
@@ -29,7 +29,7 @@ public class Product implements Serializable {
 
 	public Product(int id, String name, int oldPrice, int newPrice, int views,
 			int reviews, String tags, int postId, int promotionId,
-			Date importDate, int cateId, String describe) {
+			Date importDate, int cateId, String description) {
 		this.id = id;
 		this.name = name;
 		this.oldPrice = oldPrice;
@@ -41,7 +41,7 @@ public class Product implements Serializable {
 		this.promotionId = promotionId;
 		this.importDate = importDate;
 		this.cateId = cateId;
-		this.describe = describe;
+		this.description = description;
 	}
 
 	public int getId() {
@@ -132,12 +132,12 @@ public class Product implements Serializable {
 		this.cateId = cateId;
 	}
 
-	public String getDescribe() {
-		return describe;
+	public String getDescription() {
+		return description;
 	}
 
-	public void setDescribe(String describe) {
-		this.describe = describe;
+	public void setDescription(String description) {
+		this.description = description;
 	}
 
 	public String getUrlImage() {
@@ -166,12 +166,10 @@ public class Product implements Serializable {
 
 	@Override
 	public String toString() {
-		return "Product [id=" + id + ", name=" + name + ", oldPrice="
-				+ oldPrice + ", newPrice=" + newPrice + ", views=" + views
-				+ ", reviews=" + reviews + ", tags=" + tags + ", postId="
-				+ postId + ", promotionId=" + promotionId + ", importDate="
-				+ importDate + ", cateId=" + cateId + ", describe=" + describe
-				+ "]";
+		return "Product [id=" + id + ", name=" + name + ", oldPrice=" + oldPrice + ", newPrice=" + newPrice + ", views="
+				+ views + ", reviews=" + reviews + ", tags=" + tags + ", postId=" + postId + ", promotionId="
+				+ promotionId + ", importDate=" + importDate + ", cateId=" + cateId + ", describe=" + description
+				+ ", urlImage=" + urlImage + "]";
 	}
 
 }

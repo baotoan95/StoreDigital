@@ -32,6 +32,11 @@ public class PostDAOImpl extends BaseDAO implements PostDAO {
 		String sql = "select * from posts where id=?";
 		return jdbcTemplate.queryForObject(sql, new Object[]{id}, new PostMapper());
 	}
+	
+	public List<Post> getAllWithoutContent() {
+		String sql = "select * from posts";
+		return (List<Post>) jdbcTemplate.query(sql, new PostMapper());
+	}
 
 	public Map<String, Object> getAll(int numRecordPerPage, int currentPage) {
 		String sql = "select * from posts";

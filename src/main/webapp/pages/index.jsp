@@ -1,4 +1,3 @@
-
 <%@page import="com.baotoan.spring.entities.Advertiment"%>
 <%@page import="com.baotoan.spring.dao.ImageDAOImpl"%>
 <%@page import="com.baotoan.spring.dao.ImageDAO"%>
@@ -368,7 +367,7 @@
 								<h3>
 									<a href="${pageContext.request.contextPath }/view?id=<%=pro.getId()%>" title="<%=pro.getName()%>"><%=pro.getName()%></a>
 								</h3>
-								<p><%=pro.getDescribe()%></p>
+								<p><%= pro.getDescription() %></p>
 							</div>
 						</div>
 						<%
@@ -382,7 +381,7 @@
 								<h3>
 									<a href="${pageContext.request.contextPath }/view?id=<%=pro.getId()%>" title="<%=pro.getName()%>"><%=pro.getName()%></a>
 								</h3>
-								<p><%=pro.getDescribe()%></p>
+								<p><%=pro.getDescription() %></p>
 							</div>
 						</div>
 						<%

@@ -118,4 +118,9 @@ public class PromotionDAOImpl extends BaseDAO implements PromotionDAO {
 		}
 	}
 
+	public List<Promotion> getAll() {
+		String sql = "select * from promotions";
+		return jdbcTemplate.query(sql, new PromotionMapper());
+	}
+
 }

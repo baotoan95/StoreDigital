@@ -1,27 +1,32 @@
 	package com.baotoan.spring.controller;
 	
 	import java.util.List;
-	import java.util.Map;
-	
-	import javax.servlet.http.HttpServletRequest;
-	import javax.servlet.http.HttpSession;
-	
-	import org.springframework.beans.factory.annotation.Autowired;
-	import org.springframework.stereotype.Controller;
-	import org.springframework.ui.ModelMap;
-	import org.springframework.web.bind.annotation.ModelAttribute;
-	import org.springframework.web.bind.annotation.PathVariable;
-	import org.springframework.web.bind.annotation.RequestMapping;
-	import org.springframework.web.bind.annotation.RequestMethod;
+import java.util.Map;
+
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
+
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.ui.ModelMap;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.baotoan.spring.dao.ImageDAO;
 import com.baotoan.spring.dao.MenuCateDAO;
-	import com.baotoan.spring.dao.ProductDAO;
-	import com.baotoan.spring.entities.MenuCate;
-	import com.baotoan.spring.entities.Product;
-	import com.baotoan.spring.utils.Constant;
+import com.baotoan.spring.dao.PostDAO;
+import com.baotoan.spring.dao.ProductDAO;
+import com.baotoan.spring.dao.PromotionDAO;
+import com.baotoan.spring.entities.Image;
+import com.baotoan.spring.entities.MenuCate;
+import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.utils.Constant;
+import com.baotoan.spring.utils.GenerateCode;
 import com.baotoan.spring.utils.UploadManager;
 	
 	@Controller
@@ -31,6 +36,12 @@ import com.baotoan.spring.utils.UploadManager;
 		private ProductDAO productDAO;
 		@Autowired
 		private MenuCateDAO menuCateDAO;
+		@Autowired
+		private PostDAO postDAO;
+		@Autowired
+		private PromotionDAO promotionDAO;
+		@Autowired
+		private ImageDAO imageDAO;
 		
 		@SuppressWarnings("unchecked")
 		@RequestMapping(value="/show/{currentPage}/")
@@ -51,24 +62,28 @@ import com.baotoan.spring.utils.UploadManager;
 			model.addAttribute("title", "Thêm sản phẩm");
 			model.addAttribute("product", new Product());
 			model.addAttribute("categories", generateMenu("", 0));
+			model.addAttribute("posts", postDAO.getAllWithoutContent());
+			model.addAttribute("promotions", promotionDAO.getAll());
 			model.addAttribute("action", "add");
 			return "edit_product";
 		}
 		
 		@RequestMapping(value = "/add", method = RequestMethod.POST)
-		public String addProduct(@ModelAttribute Product product, @RequestParam(value="file", required=false) MultipartFile file, 
-				@RequestParam(value="imageName", required=false) String name, ModelMap model) {
-			UploadManager.uploadFile(name, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
-			product.setUrlImage("/images/advertiments/" + name);
+		public String addProduct(@ModelAttribute Product product, @RequestParam("avatar") MultipartFile file, ModelMap model) {
+			String fileName = GenerateCode.generateFileName() + ".jpg";
+			product.setUrlImage("/images/advertiments/" + fileName);
+			UploadManager.uploadFile(fileName, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
 			int key = productDAO.addProduct(product);
+			imageDAO.addImage(new Image(0, fileName, product.getUrlImage(), key, true));
+			model.addAttribute("product", product);
 			if(key > 0) {
 				product.setId(key);
 				model.addAttribute("title", "Cập nhập thông tin chi tiết");
-				model.addAttribute("product", product);
 				model.addAttribute("action", "editDetail");
+				
 				return "edit_product_detail";
 			} else {
-				return "redirect:/add";
+				return "redirect:/mngProducts/add";
 			}
 		}
 		
@@ -84,12 +99,12 @@ import com.baotoan.spring.utils.UploadManager;
 		public String editProduct(@PathVariable int proId, ModelMap model) {
 			Product product = productDAO.getProductById(proId);
 			
-			// Get list category
-			String cates = generateMenu("", 0);
-			
 			model.addAttribute("title", "Cập nhật thông tin sản phẩm");
 			model.addAttribute("product", product);
-			model.addAttribute("categories", cates);
+			model.addAttribute("categories", generateMenu("", 0));
+			model.addAttribute("posts", postDAO.getAllWithoutContent());
+			model.addAttribute("promotions", promotionDAO.getAll());
+			model.addAttribute("action", "editDetail");
 			return "edit_product";
 		}
 		
@@ -97,7 +112,7 @@ import com.baotoan.spring.utils.UploadManager;
 			String content = "";
 			List<MenuCate> cates = menuCateDAO.getMenuCatesByParentId(parentId);
 			for(MenuCate cate : cates) {
-				content += "<option value=''>" + space + cate.getName() + "</option>" 
+				content += "<option value='"+ cate.getId() +"'>" + space + cate.getName() + "</option>" 
 						+ generateMenu("&nbsp;&nbsp;&nbsp;&nbsp;" + space, cate.getId());
 			}
 			return content;

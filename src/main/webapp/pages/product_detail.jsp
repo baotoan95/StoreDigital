@@ -91,7 +91,7 @@
 									</div>
 								</div>
 								<div class="short-description">
-									<p>${requestScope.product.describe }</p>
+									<p>${requestScope.product.description }</p>
 								</div>
 								<div class="add-to-box">
 									<div class="add-to-cart">
