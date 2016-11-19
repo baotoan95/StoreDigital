@@ -1,7 +1,5 @@
 package com.baotoan.spring.controller;
 
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.model;
-
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,6 +15,7 @@ import com.baotoan.spring.entities.DetailProductGroup;
 import com.baotoan.spring.entities.ProductDetailByGroup;
 
 @Controller
+@RequestMapping("/mngProductDetails")
 public class AdminProductDetailsHandler {
 	@Autowired
 	private ProductDetailDAO productDetailDAO;
@@ -77,5 +76,7 @@ public class AdminProductDetailsHandler {
 		return "edit_detail_group";
 	}
 	
-	public String updateGroupDetail()
+	public String updateGroupDetail() {
+		return "";
+	}
 }

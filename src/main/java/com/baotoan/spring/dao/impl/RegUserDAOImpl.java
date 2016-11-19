@@ -1,4 +1,4 @@
-package com.baotoan.spring.impl;
+package com.baotoan.spring.dao.impl;
 
 import java.util.HashMap;
 import java.util.List;

@@ -1,7 +1,9 @@
-package com.baotoan.spring.impl;
+package com.baotoan.spring.dao.impl;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import org.springframework.stereotype.Repository;
 
 import com.baotoan.spring.dao.BaseDAO;
 import com.baotoan.spring.dao.ProductDetailDAO;
@@ -10,6 +12,7 @@ import com.baotoan.spring.entities.ProductDetailByGroup;
 import com.baotoan.spring.mapper.DetailProductGroupMapper;
 import com.baotoan.spring.mapper.ProductDetailByGroupMapper;
 
+@Repository("productDetailDAO")
 public class ProductDetailDAOImpl extends BaseDAO implements ProductDetailDAO {
 	
 	public List<ProductDetailByGroup> getAllProductDetailByGroup() {

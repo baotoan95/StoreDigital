@@ -1,4 +1,4 @@
-package com.baotoan.spring.impl;
+package com.baotoan.spring.dao.impl;
 
 import java.sql.Connection;
 import java.sql.Date;

@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.baotoan.spring.dao.UserDAO;
+import com.baotoan.spring.dao.impl.RoleDAOImpl;
 import com.baotoan.spring.entities.Role;
 import com.baotoan.spring.entities.User;
-import com.baotoan.spring.impl.RoleDAOImpl;
 
 @Controller
 @RequestMapping("/mngMembers")

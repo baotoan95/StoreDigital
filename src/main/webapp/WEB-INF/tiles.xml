@@ -147,6 +147,12 @@
 		<put-attribute name="title" value="Cập nhật thông số sản phẩm" />
 		<put-attribute name="body" value="/admin/pages/edit_product_detail.jsp" />
 	</definition>
+	
+	<definition name="details" extends="adminCommon">
+		<put-attribute name="title" value="Danh sách thuộc tính sản phẩm"></put-attribute>
+		<put-attribute name="body" value="/admin/pages/details.jsp"></put-attribute>
+	</definition>
+	
 	<!-- promotion -->
 	<definition name="mg_promotions" extends="adminCommon">
 		<put-attribute name="title" value="Danh sách đợt khuyến mãi" />

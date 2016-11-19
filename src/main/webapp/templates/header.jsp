@@ -2,7 +2,7 @@
 <%@page import="com.baotoan.spring.dao.ProductDAO"%>
 <%@page import="com.baotoan.spring.entities.MenuCate"%>
 <%@page import="java.util.List"%>
-<%@page import="com.baotoan.spring.dao.MenuCateDAOImpl"%>
+<%@page import="com.baotoan.spring.dao.impl.MenuCateDAOImpl"%>
 <%@page import="com.baotoan.spring.dao.MenuCateDAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
