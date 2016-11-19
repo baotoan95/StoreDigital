@@ -3,13 +3,13 @@
 <%@page import="java.util.Set"%>
 <%@page import="com.baotoan.spring.entities.DetailProduct"%>
 <%@page import="java.util.Map"%>
-<%@page import="com.baotoan.spring.dao.PostDAOImpl"%>
+<%@page import="com.baotoan.spring.dao.impl.PostDAOImpl"%>
 <%@page import="com.baotoan.spring.entities.Post"%>
 <%@page import="com.baotoan.spring.dao.PostDAO"%>
 <%@page import="com.baotoan.spring.entities.Product"%>
 <%@page import="java.util.List"%>
 <%@page import="com.baotoan.spring.dao.ImageDAO"%>
-<%@page import="com.baotoan.spring.dao.ImageDAOImpl"%>
+<%@page import="com.baotoan.spring.dao.impl.ImageDAOImpl"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>

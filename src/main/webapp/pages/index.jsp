@@ -1,5 +1,5 @@
 <%@page import="com.baotoan.spring.entities.Advertiment"%>
-<%@page import="com.baotoan.spring.dao.ImageDAOImpl"%>
+<%@page import="com.baotoan.spring.dao.impl.ImageDAOImpl"%>
 <%@page import="com.baotoan.spring.dao.ImageDAO"%>
 <%@page import="com.baotoan.spring.entities.Image"%>
 <%@page import="com.baotoan.spring.entities.Product"%>

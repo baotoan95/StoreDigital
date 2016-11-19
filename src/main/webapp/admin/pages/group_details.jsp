@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <div class="row">
 	<div class="col-xs-12">
 		<div class="box">
@@ -23,23 +24,22 @@
 					<tr>
 						<th>ID</th>
 						<th>Tên chi tiết</th>
-						<th>Group ID</th>
-						<th></th>
+						<th style="width: 10%;">Hành Động</th>
 					</tr>
-					<c:forEach var="detail" items="${requestScope.details }">
+					<c:forEach var="group" items="${requestScope.detailGroup }">
 					<tr>
-						<td>${detail.id }</td>
-						<td>${detail.name }</td>
-						<td>${detail.groupId }</td>
-						<td><a title="Xóa" href="#"><i class="fa fa-trash-o"></i></a></td>
+						<td>${group.id }</td>
+						<td>${group.name }</td>
+						<td>
+							<a title="Sửa" href="${pageContext.request.contextPath }/mngProductDetails/updateGroupDetail/${group.id}"><i class="fa fa-edit"></i></a> 
+							<a title="Xóa" href="#"><i class="fa fa-trash-o"></i></a>
+						</td>
 					</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div class="box-footer clearfix">
-<!--             	<ul class="pagination pagination-sm no-margin pull-right"> -->
-<%--                  	<%= request.getAttribute("pagination") %> --%>
-<!--               	</ul> -->
+				<a href="${pageContext.request.contextPath }/mngProductDetails/addGroupDetail" class="btn btn-primary">Thêm</a>
            	</div>
 		</div>
 	</div>

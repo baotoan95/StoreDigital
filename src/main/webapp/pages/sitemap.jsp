@@ -1,4 +1,4 @@
-<%@page import="com.baotoan.spring.dao.MenuCateDAOImpl"%>
+<%@page import="com.baotoan.spring.dao.impl.MenuCateDAOImpl"%>
 <%@page import="com.baotoan.spring.dao.MenuCateDAO"%>
 <%@page import="com.baotoan.spring.entities.MenuCate"%>
 <%@page import="java.util.List"%>

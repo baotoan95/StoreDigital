@@ -31,15 +31,14 @@
 						<td>${detail.id }</td>
 						<td>${detail.name }</td>
 						<td>${detail.groupId }</td>
+						<td><a title="Sửa" href="${pageContext.request.contextPath }/mngProductDetails/updateDetail/${detail.id}"><i class="fa fa-edit"></i></a></td>
 						<td><a title="Xóa" href="#"><i class="fa fa-trash-o"></i></a></td>
 					</tr>
 					</c:forEach>
 				</table>
 			</div>
 			<div class="box-footer clearfix">
-<!--             	<ul class="pagination pagination-sm no-margin pull-right"> -->
-<%--                  	<%= request.getAttribute("pagination") %> --%>
-<!--               	</ul> -->
+				<a href="${pageContext.request.contextPath }/mngProductDetails/addDetail" class="btn btn-primary">Thêm</a>
            	</div>
 		</div>
 	</div>

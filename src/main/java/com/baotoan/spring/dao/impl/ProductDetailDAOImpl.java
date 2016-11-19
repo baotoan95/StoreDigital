@@ -59,7 +59,7 @@ public class ProductDetailDAOImpl extends BaseDAO implements ProductDetailDAO {
 	}
 
 	public DetailProductGroup getDetailGroupById(int id) {
-		String sql = "select * from prod_detail_group where id=?";
+		String sql = "select * from prod_group_detail where id=?";
 		return jdbcTemplate.queryForObject(sql, new Object[] {id}, new DetailProductGroupMapper());
 	}
 
