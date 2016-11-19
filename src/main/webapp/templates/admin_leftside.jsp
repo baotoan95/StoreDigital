@@ -46,6 +46,8 @@
               <ul class="treeview-menu">
                 <li><a href="${pageContext.request.contextPath }/mngProducts/show/1/"><i class="fa fa-circle-o"></i>Tất cả</a></li>
                 <li><a href="${pageContext.request.contextPath }/mngProducts/add"><i class="fa fa-circle-o"></i>Thêm sản phẩm</a></li>
+                <li><a href="${pageContext.request.contextPath }/mngProducts/add"><i class="fa fa-circle-o"></i>Chi tiết sản phẩm</a></li>
+                <li><a href="${pageContext.request.contextPath }/mngProducts/add"><i class="fa fa-circle-o"></i>Nhóm chi tiết</a></li>
               </ul>
             </li>
             <li class="treeview ${sessionScope.adminCurrentPage == 'mngPromotions' ? 'active' : ''}">

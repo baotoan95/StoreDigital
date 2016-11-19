@@ -88,7 +88,7 @@ import com.baotoan.spring.utils.UploadManager;
 		}
 		
 		private void setAttributeForEditProductDetail(ModelMap model) {
-			model.addAttribute("", attributeValue)
+//			model.addAttribute("", attributeValue)
 		}
 		
 		public String editDetail() {
