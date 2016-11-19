@@ -4,10 +4,10 @@ import java.util.List;
 import java.util.Map;
 
 import com.baotoan.spring.dao.ProductDAO;
-import com.baotoan.spring.dao.ProductDAOImpl;
 import com.baotoan.spring.entities.DetailProduct;
 import com.baotoan.spring.entities.DetailProductGroup;
 import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.impl.ProductDAOImpl;
 
 public class ProductServiceImpl implements ProductService {
 	private ProductDAO productDAO = new ProductDAOImpl();

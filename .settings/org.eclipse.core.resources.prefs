@@ -1,7 +1,12 @@
 eclipse.preferences.version=1
+encoding//src/main/java/com/baotoan/spring/annotation/DateValid.java=UTF-8
+encoding//src/main/java/com/baotoan/spring/annotation/NotEmpty.java=UTF-8
+encoding//src/main/java/com/baotoan/spring/annotation/Phone.java=UTF-8
+encoding//src/main/java/com/baotoan/spring/controller/AdminAdvertimentHandler.java=UTF-8
 encoding//src/main/java/com/baotoan/spring/controller/AdminMemberHandler.java=UTF-8
 encoding//src/main/java/com/baotoan/spring/controller/AdminPostHandler.java=UTF-8
 encoding//src/main/java/com/baotoan/spring/controller/AdminPromotionHandler.java=UTF-8
 encoding//src/main/java/com/baotoan/spring/controller/Authentication.java=UTF-8
 encoding//src/main/java/com/baotoan/spring/controller/CartHandler.java=UTF-8
 encoding//src/main/java/com/baotoan/spring/controller/RegUserHanler.java=UTF-8
+encoding/<project>=UTF-8

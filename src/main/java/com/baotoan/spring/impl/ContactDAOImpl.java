@@ -1,4 +1,4 @@
-package com.baotoan.spring.dao;
+package com.baotoan.spring.impl;
 
 import java.util.HashMap;
 import java.util.List;
@@ -6,6 +6,8 @@ import java.util.Map;
 
 import org.springframework.stereotype.Repository;
 
+import com.baotoan.spring.dao.BaseDAO;
+import com.baotoan.spring.dao.ContactDAO;
 import com.baotoan.spring.entities.Contact;
 import com.baotoan.spring.mapper.ContactMapper;
 import com.baotoan.spring.utils.Pagination;

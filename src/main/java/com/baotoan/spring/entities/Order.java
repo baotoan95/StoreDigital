@@ -6,7 +6,7 @@ import javax.validation.constraints.Size;
 
 import com.baotoan.spring.annotation.NotEmpty;
 import com.baotoan.spring.annotation.Phone;
-import com.baotoan.spring.dao.StatusDAOImpl;
+import com.baotoan.spring.impl.StatusDAOImpl;
 
 @SuppressWarnings("serial")
 public class Order implements Serializable {

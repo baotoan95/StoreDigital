@@ -1,9 +1,11 @@
-package com.baotoan.spring.dao;
+package com.baotoan.spring.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.baotoan.spring.dao.BaseDAO;
+import com.baotoan.spring.dao.PaymentDAO;
 import com.baotoan.spring.entities.Payment;
 import com.baotoan.spring.mapper.PaymentMapper;
 

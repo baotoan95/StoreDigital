@@ -87,6 +87,15 @@ import com.baotoan.spring.utils.UploadManager;
 			}
 		}
 		
+		private void setAttributeForEditProductDetail(ModelMap model) {
+			model.addAttribute("", attributeValue)
+		}
+		
+		public String editDetail() {
+			
+			return "edit_product_detail";
+		}
+		
 		@RequestMapping(value = "/del", method = RequestMethod.DELETE)
 		@ResponseBody
 		public String delProduct(@ModelAttribute(value = "id") int id) {

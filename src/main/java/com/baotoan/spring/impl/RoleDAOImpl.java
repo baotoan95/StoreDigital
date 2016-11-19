@@ -1,9 +1,11 @@
-package com.baotoan.spring.dao;
+package com.baotoan.spring.impl;
 
 import java.util.List;
 
 import org.springframework.stereotype.Repository;
 
+import com.baotoan.spring.dao.BaseDAO;
+import com.baotoan.spring.dao.RoleDAO;
 import com.baotoan.spring.entities.Role;
 import com.baotoan.spring.mapper.RoleMapper;
 
