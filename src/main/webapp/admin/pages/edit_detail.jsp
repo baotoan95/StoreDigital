@@ -9,7 +9,7 @@
 		<span style="color: red;">${requestScope.message }</span>
 	</div>
 	
-	<form:form method="POST" modelAttribute="productDetail" action="${pageContext.request.contextPath }/mngProductDetails/${requestScope.action }">
+	<form:form method="POST" modelAttribute="productDetailFrom" action="${pageContext.request.contextPath }/mngProductDetails/${requestScope.action }">
 		<form:hidden path="id"/>
 		<div class="box-body">
 			<div class="form-group">

@@ -64,7 +64,7 @@
 			</div>
 		</div>
 		<div class="box-footer">
-			<input type="submit" value="Lưu và tiếp tục"/>
+			<input type="submit" value="Lưu và tiếp tục" class="btn btn-primary"/>
 		</div>
 	</form:form>
 </div>

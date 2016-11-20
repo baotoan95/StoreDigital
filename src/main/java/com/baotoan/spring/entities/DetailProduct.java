@@ -67,5 +67,14 @@ public class DetailProduct implements Serializable {
 		return "DetailProduct [id=" + id + ", name=" + name + ", productId="
 				+ productId + ", value=" + value + ", group=" + group + "]";
 	}
+	
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof DetailProduct) {
+			DetailProduct other = (DetailProduct) obj;
+			return name.equals(other.getName()) && group == other.getGroup();
+		}
+		return false;
+	}
 
 }

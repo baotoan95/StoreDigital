@@ -23,6 +23,8 @@ import com.baotoan.spring.dao.PostDAO;
 import com.baotoan.spring.dao.ProductDAO;
 import com.baotoan.spring.dao.ProductDetailDAO;
 import com.baotoan.spring.dao.PromotionDAO;
+import com.baotoan.spring.dto.ProductDetailFormDTO;
+import com.baotoan.spring.entities.DetailProduct;
 import com.baotoan.spring.entities.DetailProductGroup;
 import com.baotoan.spring.entities.Image;
 import com.baotoan.spring.entities.MenuCate;
@@ -82,21 +84,96 @@ import com.baotoan.spring.utils.UploadManager;
 			imageDAO.addImage(new Image(0, fileName, product.getUrlImage(), key, true));
 			model.addAttribute("product", product);
 			if(key > 0) {
-				product.setId(key);
-				model.addAttribute("title", "Cập nhập thông tin chi tiết");
-				model.addAttribute("action", "editDetail");
-				
-				return "edit_product_detail";
+				return "redirect:/mngProducts/addDetail/" + key;
 			} else {
 				return "redirect:/mngProducts/add";
 			}
 		}
 		
-		private void setAttributeForEditProductDetail(ModelMap model) {
-//			model.addAttribute("", attributeValue)
+		@RequestMapping("/addDetail/{id}")
+		public String addDetail(@PathVariable("id") int prodId, ModelMap model) {
+			Product product = productDAO.getProductById(prodId);
+			if(null == product) {
+				return "redirect:/mngProducts/show/1/";
+			} else {
+				Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+				List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
+				for(DetailProductGroup detailProductGroup : detailProductGroups) {
+					List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
+					data.put(detailProductGroup, productDetailByGroups);
+				}
+				model.addAttribute("title", "Cập nhập thông tin chi tiết");
+				model.addAttribute("action", "addDetail");
+				model.addAttribute("details", data);
+				ProductDetailFormDTO productDetailFormDTO = new ProductDetailFormDTO();
+				productDetailFormDTO.setProductId(prodId);
+				model.addAttribute("productDetailForm", productDetailFormDTO);
+			}
+			return "edit_product_detail";
 		}
 		
-		@RequestMapping(value = "/addDetail/{id}")
+		@RequestMapping(value = "/addDetail", method = RequestMethod.POST)
+		public String addDetail(@ModelAttribute("productDetailForm") ProductDetailFormDTO productDetailFormDTO, ModelMap model) {
+			List<DetailProduct> detailProducts = productDetailFormDTO.getDetailsProduct();
+			
+			Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+			List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
+			for(DetailProductGroup detailProductGroup : detailProductGroups) {
+				List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
+				data.put(detailProductGroup, productDetailByGroups);
+			}
+			
+			if(null != detailProducts && detailProducts.size() > 0) {
+				for(DetailProduct detailProduct : detailProducts) {
+					String value = detailProduct.getValue().trim();
+					if(!value.equals("")) {
+						productDAO.addDetailProduct(detailProduct);
+					}
+				}
+				model.addAttribute("title", "Cập nhật thông tin chi tiết");
+				model.addAttribute("action", "editDetail");
+			} else {
+				model.addAttribute("title", "Thêm thông tin chi tiết");
+				model.addAttribute("action", "addDetail");
+			}
+			
+			model.addAttribute("productDetailForm", productDetailFormDTO);
+			model.addAttribute("details", data);
+			return "edit_product_detail";
+		}
+		
+		@RequestMapping(value = "/edit/{proId}")
+		public String editProduct(@PathVariable int proId, ModelMap model) {
+			Product product = productDAO.getProductById(proId);
+			
+			System.out.println(product);
+			
+			model.addAttribute("title", "Cập nhật thông tin sản phẩm");
+			model.addAttribute("product", product);
+			model.addAttribute("categories", generateMenu("", 0));
+			model.addAttribute("posts", postDAO.getAllWithoutContent());
+			model.addAttribute("promotions", promotionDAO.getAll());
+			model.addAttribute("action", "edit");
+			return "edit_product";
+		}
+		
+		@RequestMapping(value = "/edit", method = RequestMethod.POST)
+		public String editProduct(@ModelAttribute Product product, @RequestParam("avatarUrl") MultipartFile file, ModelMap model) {
+			if(null != file) {
+				String fileName = GenerateCode.generateFileName() + ".jpg";
+				product.setUrlImage("/images/advertiments/" + fileName);
+				UploadManager.uploadFile(fileName, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
+			}
+			if(productDAO.updateProduct(product)) {
+				model.addAttribute("title", "Cập nhật thành công");
+				return "redirect:/mngProducts/editDetail/" + product.getId();
+			} else {
+				model.addAttribute("title", "Cập nhật chưa thành công");
+				return "edit_product";
+			}
+		}
+		
+		@RequestMapping(value = "/editDetail/{id}")
 		public String editDetail(@PathVariable("id") int id, ModelMap model) {
 			Product product = productDAO.getProductById(id);
 			if(null == product) {
@@ -108,22 +185,43 @@ import com.baotoan.spring.utils.UploadManager;
 					List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
 					data.put(detailProductGroup, productDetailByGroups);
 				}
+				model.addAttribute("title", "Cập nhập thông tin chi tiết");
+				model.addAttribute("action", "editDetail");
 				model.addAttribute("details", data);
+				ProductDetailFormDTO productDetailFormDTO = new ProductDetailFormDTO();
+				productDetailFormDTO.setProductId(id);
+				model.addAttribute("productDetailForm", productDetailFormDTO);
 			}
 			return "edit_product_detail";
 		}
 		
-		@RequestMapping(value = "/edit/{proId}")
-		public String editProduct(@PathVariable int proId, ModelMap model) {
-			Product product = productDAO.getProductById(proId);
+		@RequestMapping(value = "/editDetail", method = RequestMethod.POST)
+		public String editDetail(@ModelAttribute("productDetailForm") ProductDetailFormDTO productDetailFormDTO, ModelMap model) {
+			List<DetailProduct> detailProducts = productDetailFormDTO.getDetailsProduct();
 			
-			model.addAttribute("title", "Cập nhật thông tin sản phẩm");
-			model.addAttribute("product", product);
-			model.addAttribute("categories", generateMenu("", 0));
-			model.addAttribute("posts", postDAO.getAllWithoutContent());
-			model.addAttribute("promotions", promotionDAO.getAll());
+			Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+			List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
+			for(DetailProductGroup detailProductGroup : detailProductGroups) {
+				List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
+				data.put(detailProductGroup, productDetailByGroups);
+			}
+			
+			if(null != detailProducts && detailProducts.size() > 0) {
+				for(DetailProduct detailProduct : detailProducts) {
+					String value = detailProduct.getValue().trim();
+					if(!value.equals("")) {
+						productDAO.addDetailProduct(detailProduct);
+					}
+				}
+				model.addAttribute("title", "Cập nhật thông tin chi tiết");
+			} else {
+				model.addAttribute("title", "Cập nhật chưa tin chi tiết");
+			}
+			
 			model.addAttribute("action", "editDetail");
-			return "edit_product";
+			model.addAttribute("productDetailForm", productDetailFormDTO);
+			model.addAttribute("details", data);
+			return "edit_product_detail";
 		}
 		
 		private String generateMenu(String space, int parentId) {
