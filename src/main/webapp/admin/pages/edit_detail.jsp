@@ -30,6 +30,7 @@
 			<button onclick="submit" class="btn btn-primary">
 				${requestScope.action == "updateDetail" ? "Cập Nhật" : "Thêm" }
 			</button>
+			<a href="${pageContext.request.contextPath }/mngProductDetails/addDetail" class="btn btn-primary">Thêm Mới</a>
 		</div>
 	</form:form>
 	

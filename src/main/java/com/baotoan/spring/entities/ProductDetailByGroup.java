@@ -40,4 +40,9 @@ public class ProductDetailByGroup {
 		this.groupId = groupId;
 	}
 
+	@Override
+	public String toString() {
+		return "ProductDetailByGroup [id=" + id + ", name=" + name + ", groupId=" + groupId + "]";
+	}
+
 }

@@ -59,8 +59,8 @@
 				<form:textarea path="description" id="description" class="form-control"/>
 			</div>
 			<div class="form-group">
-				<label for="avatar">Ảnh đại diện</label>
-				<input type="file" name="avatar" id="avatar" class="form-control">
+				<label for="avatarUrl">Ảnh đại diện</label>
+				<input type="file" name="avatarUrl" id="avatarUrl" class="form-control">
 			</div>
 		</div>
 		<div class="box-footer">

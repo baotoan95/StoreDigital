@@ -9,6 +9,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.PreparedStatementCreator;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
@@ -30,7 +31,8 @@ import com.baotoan.spring.utils.Pagination;
 
 @Repository("productDAO")
 public class ProductDAOImpl extends BaseDAO implements ProductDAO {
-	private ImageDAO imageDAO = new ImageDAOImpl();
+	@Autowired
+	private ImageDAO imageDAO;
 
 	public int addProduct(final Product product) {
 		final String sql = "insert into prods(name,old_price,new_price,views,reviews,tags,postId,promotionId,importDate,cateId,description) "
@@ -72,7 +74,9 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 	}
 
 	public boolean deleteProduct(int id) {
-		String sql = "delete * FROM prods WHERE id=?";
+		String sql = "delete FROM prods WHERE id=?";
+		deleteDetailProductByProductId(id);
+		imageDAO.deleteImageByProductId(id);
 		return (jdbcTemplate.update(sql, new Object[] { id }) > 0);
 	}
 
@@ -98,10 +102,10 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 				new Object[] { detailProductGroup.getName(), detailProductGroup.getId() }) > 0);
 	}
 
-	public boolean deleteDetailProductGroup(int id) {
-		String sql = "delete * FROM prod_group_detail WHERE id=?";
-		return (jdbcTemplate.update(sql, new Object[] { id }) > 0);
-	}
+//	public boolean deleteDetailProductGroup(int id) {
+//		String sql = "delete * FROM prod_group_detail WHERE id=?";
+//		return (jdbcTemplate.update(sql, new Object[] { id }) > 0);
+//	}
 
 	public DetailProductGroup getDetailProductGroupById(int id) {
 		String sql = "SELECT * FROM prod_group_detail WHERE id=?";
@@ -126,17 +130,17 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 	}
 
 	public boolean deleteDetailProduct(int id) {
-		String sql = "delete * FROM prod_detail WHERE id=?";
+		String sql = "delete FROM prod_detail WHERE id=?";
 		return (jdbcTemplate.update(sql, new Object[] { id }) > 0);
 	}
 
 	public boolean deleteDetailProductByProductId(int productId) {
-		String sql = "delete * FROM prod_detail WHERE productId=?";
+		String sql = "delete FROM prod_detail WHERE productId=?";
 		return (jdbcTemplate.update(sql, new Object[] { productId }) > 0);
 	}
 
 	public boolean deleteDetailProductByGroup(int groupId) {
-		String sql = "delete * FROM prod_detail WHERE groupId=?";
+		String sql = "delete FROM prod_detail WHERE groupId=?";
 		return (jdbcTemplate.update(sql, new Object[] { groupId }) > 0);
 	}
 

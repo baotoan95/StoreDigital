@@ -81,8 +81,9 @@
 								<div class="price-block">
 									<div class="price-box">
 										<p class="old-price">
-											<span class="price"> ${requestScope.product.oldPrice }
-												VNĐ</span>
+											<span class="price"> 
+												${requestScope.product.oldPrice == 0 ? "" : requestScope.product.oldPrice }
+											</span>
 										</p>
 										<p class="special-price">
 											<span class="price"> ${requestScope.product.newPrice }
@@ -138,18 +139,20 @@
 								<li><a href="#product_tabs_custom" data-toggle="tab">Bình Luận</a></li>
 							</ul>
 							<div id="productTabContent" class="tab-content">
-								<div class="tab-pane fade in active"
-									id="product_tabs_description">
+								<div class="tab-pane fade in active" id="product_tabs_description">
 									<div class="std">
 										<%
 											Product pro = (Product) request.getAttribute("product");
 											Post post = new PostDAOImpl().getPostById(pro.getId());
+											
+											if(null != post) {
 										%>
 										<p class="posttitle" style="font-size: 30px; font-weight: bolt; text-align: center;"><%=post.getTitle()%></p>
-										<%=post.getContent()%>
+										<%= post.getContent()%>
 										<br/><br/>
 										<p class="date" style="text-align: right; color: blue;">Ngày đăng: <%=post.getPublishDate()%></p>
 										<p class="author" style="text-align: right; color: blue;">Tác giả: <%=post.getAuthor()%></p>
+										<%} else { out.print("Đang cập nhật..."); }%>
 									</div>
 								</div>
 								<div class="tab-pane fade" id="digital">

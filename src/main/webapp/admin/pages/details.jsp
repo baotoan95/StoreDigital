@@ -32,7 +32,7 @@
 						<td>${detail.name }</td>
 						<td>${detail.groupId }</td>
 						<td><a title="Sửa" href="${pageContext.request.contextPath }/mngProductDetails/updateDetail/${detail.id}"><i class="fa fa-edit"></i></a></td>
-						<td><a title="Xóa" href="#"><i class="fa fa-trash-o"></i></a></td>
+						<td><a title="Xóa" href="${pageContext.request.contextPath }/mngProductDetails/deleteDetail/${detail.id}"><i class="fa fa-trash-o"></i></a></td>
 					</tr>
 					</c:forEach>
 				</table>

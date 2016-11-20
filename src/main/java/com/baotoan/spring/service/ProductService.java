@@ -15,7 +15,7 @@ public interface ProductService {
 	
 	public boolean addDetailProductGroup(DetailProductGroup detailProductGroup);
 	public boolean updateDetailProductGroup(DetailProductGroup detailProductGroup);
-	public boolean deleteDetailProductGroup(int id);
+//	public boolean deleteDetailProductGroup(int id);
 	public DetailProductGroup getDetailProductGroupById(int id);
 	public List<DetailProductGroup> getDetailProductGroups();
 	

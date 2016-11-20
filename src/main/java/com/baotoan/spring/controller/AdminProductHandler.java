@@ -1,6 +1,7 @@
 	package com.baotoan.spring.controller;
 	
-	import java.util.List;
+	import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.http.HttpServletRequest;
@@ -14,17 +15,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.baotoan.spring.dao.ImageDAO;
 import com.baotoan.spring.dao.MenuCateDAO;
 import com.baotoan.spring.dao.PostDAO;
 import com.baotoan.spring.dao.ProductDAO;
+import com.baotoan.spring.dao.ProductDetailDAO;
 import com.baotoan.spring.dao.PromotionDAO;
+import com.baotoan.spring.entities.DetailProductGroup;
 import com.baotoan.spring.entities.Image;
 import com.baotoan.spring.entities.MenuCate;
 import com.baotoan.spring.entities.Product;
+import com.baotoan.spring.entities.ProductDetailByGroup;
 import com.baotoan.spring.utils.Constant;
 import com.baotoan.spring.utils.GenerateCode;
 import com.baotoan.spring.utils.UploadManager;
@@ -42,6 +45,8 @@ import com.baotoan.spring.utils.UploadManager;
 		private PromotionDAO promotionDAO;
 		@Autowired
 		private ImageDAO imageDAO;
+		@Autowired
+		private ProductDetailDAO productDetailDAO;
 		
 		@SuppressWarnings("unchecked")
 		@RequestMapping(value="/show/{currentPage}/")
@@ -69,7 +74,7 @@ import com.baotoan.spring.utils.UploadManager;
 		}
 		
 		@RequestMapping(value = "/add", method = RequestMethod.POST)
-		public String addProduct(@ModelAttribute Product product, @RequestParam("avatar") MultipartFile file, ModelMap model) {
+		public String addProduct(@ModelAttribute Product product, @RequestParam("avatarUrl") MultipartFile file, ModelMap model) {
 			String fileName = GenerateCode.generateFileName() + ".jpg";
 			product.setUrlImage("/images/advertiments/" + fileName);
 			UploadManager.uploadFile(fileName, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
@@ -91,18 +96,22 @@ import com.baotoan.spring.utils.UploadManager;
 //			model.addAttribute("", attributeValue)
 		}
 		
-		public String editDetail() {
-			
+		@RequestMapping(value = "/addDetail/{id}")
+		public String editDetail(@PathVariable("id") int id, ModelMap model) {
+			Product product = productDAO.getProductById(id);
+			if(null == product) {
+				return "redirect:/mngProducts/show/1/";
+			} else {
+				Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+				List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
+				for(DetailProductGroup detailProductGroup : detailProductGroups) {
+					List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
+					data.put(detailProductGroup, productDetailByGroups);
+				}
+				model.addAttribute("details", data);
+			}
 			return "edit_product_detail";
 		}
-		
-		@RequestMapping(value = "/del", method = RequestMethod.DELETE)
-		@ResponseBody
-		public String delProduct(@ModelAttribute(value = "id") int id) {
-			productDAO.deleteProduct(id);
-			return "{\"\":\"\"}";
-		}
-		
 		
 		@RequestMapping(value = "/edit/{proId}")
 		public String editProduct(@PathVariable int proId, ModelMap model) {
@@ -125,5 +134,11 @@ import com.baotoan.spring.utils.UploadManager;
 						+ generateMenu("&nbsp;&nbsp;&nbsp;&nbsp;" + space, cate.getId());
 			}
 			return content;
+		}
+		
+		@RequestMapping("/delete/{id}")
+		public String deleteProduct(@PathVariable("id") int id, ModelMap model) {
+			productDAO.deleteProduct(id);
+			return "redirect:/mngProducts/show/1/";
 		}
 	}

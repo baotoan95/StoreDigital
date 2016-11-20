@@ -9,7 +9,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RequestParam;
 
 import com.baotoan.spring.dao.ProductDetailDAO;
 import com.baotoan.spring.entities.DetailProductGroup;
@@ -130,7 +129,15 @@ public class AdminProductDetailsHandler {
 		return "edit_detail_group";
 	}
 	
-	public String deleteGroupDetail(@PathVariable int id) {
+	@RequestMapping(value = "/deleteGroupDetail/{id}")
+	public String deleteGroupDetail(@PathVariable("id") int id) {
+		productDetailDAO.deleteDetailGroup(id);
 		return "redirect:/mngProductDetails/detailGroups";
+	}
+	
+	@RequestMapping(value = "/deleteDetail/{id}")
+	public String deleteDetail(@PathVariable("id") int id) {
+		productDetailDAO.deleteDetailByGroup(id);
+		return "redirect:/mngProductDetails/details";
 	}
 }

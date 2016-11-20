@@ -25,7 +25,7 @@ public class ImageDAOImpl extends BaseDAO implements ImageDAO {
 	}
 
 	public boolean deleteImage(int id) {
-		String sql = "delete * from images where id=?";
+		String sql = "delete from images where id=?";
 		return (jdbcTemplate.update(sql, new Object[]{id}, new ImageMapper()) > 0);
 	}
 
@@ -42,6 +42,11 @@ public class ImageDAOImpl extends BaseDAO implements ImageDAO {
 	public List<Image> getImagesByProductId(int productId) {
 		String sql = "select * from images where prodId=?";
 		return jdbcTemplate.query(sql, new Object[]{productId}, new ImageMapper());
+	}
+
+	public boolean deleteImageByProductId(int productId) {
+		String sql = "delete from images where prodId=?";
+		return jdbcTemplate.update(sql, new Object[] {productId}) > 0;
 	}
 
 }

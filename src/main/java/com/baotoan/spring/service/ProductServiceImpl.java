@@ -37,9 +37,9 @@ public class ProductServiceImpl implements ProductService {
 		return productDAO.updateDetailProductGroup(detailProductGroup);
 	}
 
-	public boolean deleteDetailProductGroup(int id) {
-		return productDAO.deleteDetailProductByGroup(id) && productDAO.deleteDetailProductGroup(id);
-	}
+//	public boolean deleteDetailProductGroup(int id) {
+//		return productDAO.deleteDetailProductByGroup(id) && productDAO.deleteDetailProductGroup(id);
+//	}
 
 	public DetailProductGroup getDetailProductGroupById(int id) {
 		return productDAO.getDetailProductGroupById(id);

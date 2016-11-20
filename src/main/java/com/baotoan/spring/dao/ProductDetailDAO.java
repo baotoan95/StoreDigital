@@ -11,9 +11,12 @@ public interface ProductDetailDAO {
 	public boolean updateDetail(ProductDetailByGroup productDetailByGroup);
 	public List<ProductDetailByGroup> getAllProductDetailByGroup();
 	public List<ProductDetailByGroup> getAllProductDetailByGroupId(int groupId);
+	public boolean deleteDetailByGroup(int id);
+	public boolean deleteDetailByGroupByGroupId(int groupId);
 	
 	public DetailProductGroup getDetailGroupById(int id);
 	public boolean addDetailGroup(DetailProductGroup detailProductGroup);
 	public boolean updateDetailGroup(DetailProductGroup detailProductGroup);
 	public List<DetailProductGroup> getAllDetailGroup();
+	public boolean deleteDetailGroup(int id);
 }

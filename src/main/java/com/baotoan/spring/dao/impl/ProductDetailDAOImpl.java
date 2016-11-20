@@ -16,7 +16,7 @@ import com.baotoan.spring.mapper.ProductDetailByGroupMapper;
 public class ProductDetailDAOImpl extends BaseDAO implements ProductDetailDAO {
 	
 	public List<ProductDetailByGroup> getAllProductDetailByGroup() {
-		String sql = "select * from detail_product_by_group";
+		String sql = "select * from detail_product_by_group order by id DESC";
 		return jdbcTemplate.query(sql, new ProductDetailByGroupMapper());
 	}
 
@@ -61,6 +61,22 @@ public class ProductDetailDAOImpl extends BaseDAO implements ProductDetailDAO {
 	public DetailProductGroup getDetailGroupById(int id) {
 		String sql = "select * from prod_group_detail where id=?";
 		return jdbcTemplate.queryForObject(sql, new Object[] {id}, new DetailProductGroupMapper());
+	}
+
+	public boolean deleteDetailGroup(int id) {
+		String sql = "delete from prod_group_detail where id=?";
+		deleteDetailByGroupByGroupId(id);
+		return jdbcTemplate.update(sql, new Object[] {id}) > 0;
+	}
+
+	public boolean deleteDetailByGroup(int id) {
+		String sql = "delete from detail_product_by_group where id=?";
+		return jdbcTemplate.update(sql, new Object[] {id}) > 0;
+	}
+
+	public boolean deleteDetailByGroupByGroupId(int groupId) {
+		String sql = "delete from detail_product_by_group where groupId=?";
+		return jdbcTemplate.update(sql, new Object[] {groupId}) > 0;
 	}
 
 }
