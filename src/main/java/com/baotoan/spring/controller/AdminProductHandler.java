@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
 
+import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
@@ -38,6 +39,9 @@ import com.baotoan.spring.utils.UploadManager;
 	@Controller
 	@RequestMapping("/mngProducts")
 	public class AdminProductHandler {
+		@Autowired
+		private ServletContext context;
+		
 		@Autowired
 		private ProductDAO productDAO;
 		@Autowired
@@ -79,7 +83,7 @@ import com.baotoan.spring.utils.UploadManager;
 		@RequestMapping(value = "/add", method = RequestMethod.POST)
 		public String addProduct(@ModelAttribute Product product, @RequestParam("avatarUrl") MultipartFile file, ModelMap model) {
 			String fileName = GenerateCode.generateFileName() + ".jpg";
-			product.setUrlImage("/images/advertiments/" + fileName);
+			product.setUrlImage("/images/" + fileName);
 			UploadManager.uploadFile(fileName, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
 			
 			product.setImportDate(new Date());
@@ -129,10 +133,7 @@ import com.baotoan.spring.utils.UploadManager;
 			
 			if(null != detailProducts && detailProducts.size() > 0) {
 				for(DetailProduct detailProduct : detailProducts) {
-					String value = detailProduct.getValue().trim();
-					if(!value.equals("")) {
-						productDAO.addDetailProduct(detailProduct);
-					}
+					productDAO.addDetailProduct(detailProduct);
 				}
 				model.addAttribute("title", "Cập nhật thông tin chi tiết");
 				model.addAttribute("action", "editDetail");
@@ -163,9 +164,11 @@ import com.baotoan.spring.utils.UploadManager;
 		public String editProduct(@ModelAttribute Product product, @RequestParam("avatarUrl") MultipartFile file, ModelMap model) {
 			if(null != file) {
 				String fileName = GenerateCode.generateFileName() + ".jpg";
-				product.setUrlImage("/images/advertiments/" + fileName);
-				UploadManager.uploadFile(fileName, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
+				product.setUrlImage("/images/" + fileName);
+				System.out.println(context.getRealPath(""));
+				UploadManager.uploadFile(fileName, file, context.getRealPath("") + "/resources/images/");
 			}
+			product.setImportDate(new Date());
 			if(productDAO.updateProduct(product)) {
 				model.addAttribute("title", "Cập nhật thành công");
 				return "redirect:/mngProducts/editDetail/" + product.getId();
@@ -211,10 +214,7 @@ import com.baotoan.spring.utils.UploadManager;
 			
 			if(null != detailProducts && detailProducts.size() > 0) {
 				for(DetailProduct detailProduct : detailProducts) {
-					String value = detailProduct.getValue().trim();
-					if(!value.equals("")) {
-						productDAO.addDetailProduct(detailProduct);
-					}
+					productDAO.addDetailProduct(detailProduct);
 				}
 				model.addAttribute("title", "Cập nhật thông tin chi tiết");
 			} else {

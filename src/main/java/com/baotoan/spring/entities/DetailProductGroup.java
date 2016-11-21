@@ -3,7 +3,7 @@ package com.baotoan.spring.entities;
 import java.io.Serializable;
 
 @SuppressWarnings("serial")
-public class DetailProductGroup implements Serializable {
+public class DetailProductGroup implements Serializable, Comparable<DetailProductGroup> {
 	private int id;
 	private String name;
 
@@ -34,6 +34,10 @@ public class DetailProductGroup implements Serializable {
 	@Override
 	public String toString() {
 		return "DetailProductGroup [id=" + id + ", name=" + name + "]";
+	}
+
+	public int compareTo(DetailProductGroup o) {
+		return this.id > o.getId() ? 1 : 0;
 	}
 
 }

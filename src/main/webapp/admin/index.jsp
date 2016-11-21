@@ -63,7 +63,7 @@
 			<!-- small box -->
 			<div class="small-box bg-green">
 				<div class="inner">
-					<h3>923423</h3>
+					<h3>374</h3>
 					<p>Tổng lượt ghé thăm</p>
 				</div>
 				<div class="icon">

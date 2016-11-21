@@ -11,7 +11,7 @@
 	action="${pageContext.request.contextPath }/mngProducts/${requestScope.action }"
 	enctype="multipart/form-data">
 		<form:hidden path="id"/>
-		<form:hidden path="importDate" class="form-controlb" id="importDate"/>
+<%-- 		<form:hidden path="importDate" class="form-controlb" id="importDate"/> --%>
 		
 		<div class="box-body">
 			<div class="form-group">

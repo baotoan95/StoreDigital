@@ -13,12 +13,8 @@ public class UploadManager {
 				byte[] bytes = file.getBytes();
 
 				// Creating the directory to store file
-				System.out.println(file.getSize());
-				System.out.println(name);
-				System.out.println(store);
 				File dir = new File(store);
 				if (!dir.exists()) {
-					System.out.println("create");
 					dir.mkdirs();
 				}
 
@@ -35,6 +31,7 @@ public class UploadManager {
 				return false;
 			}
 		} else {
+			System.out.println("File is empty");
 			return false;
 		}
 	}

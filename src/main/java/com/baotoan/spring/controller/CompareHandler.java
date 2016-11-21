@@ -118,10 +118,12 @@ public class CompareHandler {
 			for(Product pro : listProduct) {
 				Map<String, Map<String, DetailProduct>> detail = pro.getDetail();
 				Map<String, DetailProduct> d = detail.get(groupName);
-				Set<String> names = d.keySet();
-				Iterator<String> iter = names.iterator();
-				while(iter.hasNext()) {
-					nameDetails.add(iter.next());
+				if(null != d) {
+					Set<String> names = d.keySet();
+					Iterator<String> iter = names.iterator();
+					while(iter.hasNext()) {
+						nameDetails.add(iter.next());
+					}
 				}
 			}
 			

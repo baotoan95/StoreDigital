@@ -10,7 +10,7 @@
 			<fieldset class="col2-set">
 				<legend>Đăng Nhập hoặc Đăng Ký</legend>
 				<div class="col-1 new-users">
-					<strong>Đăng Nhập</strong>
+					<strong>Đăng Ký</strong>
 					<div class="content">
 						<form:form action="${pageContext.request.contextPath }/auRegis"
 							commandName="user" method="POST">

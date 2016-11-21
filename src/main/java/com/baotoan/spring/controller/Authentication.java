@@ -42,7 +42,6 @@ public class Authentication {
 	@RequestMapping(value="/auth", method = RequestMethod.POST)
 	public String loginAuth(@Valid User user, BindingResult result, ModelMap model, HttpSession session) {
 		if(result.hasErrors()) {
-			System.out.println(result.getAllErrors());
 			return "login";
 		}
 		try {
@@ -61,7 +60,13 @@ public class Authentication {
 						}
 					}
 					session.removeAttribute("listWish");
-					return "redirect:index";
+					
+					// Redirect
+					if(userAuth.getRole() == 2) {
+						return "redirect:admin";
+					} else {
+						return "redirect:index";
+					}
 				} else if(userAuth.getStatus().indexOf("actived") != -1 && userAuth.getStatus().length() > 7) { 
 					userAuth.setStatus("actived");
 					userDAO.updateUser(userAuth);

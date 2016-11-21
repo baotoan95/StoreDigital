@@ -6,6 +6,10 @@
 <%@page import="java.util.List"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
+
+<script type="text/javascript" src="<c:url value="/resources/js/notification.js"/>"></script>
+<script type="text/javascript" src="<c:url value="/resources/js/compare.js"/>"></script>
+
   <!-- End header -->
   <section class="main-container col1-layout">
     <div class="main container">
@@ -90,7 +94,8 @@
             	}
             %>
             </tbody>
-          </table></div>
+          </table>
+          </div>
         </div>
       </div>
     </div>
