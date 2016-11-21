@@ -1,5 +1,6 @@
 package com.baotoan.spring.dto;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.baotoan.spring.entities.DetailProduct;
@@ -9,16 +10,25 @@ public class ProductDetailFormDTO {
 	private List<DetailProduct> detailsProduct;
 
 	public ProductDetailFormDTO() {
+		this.detailsProduct = new ArrayList<DetailProduct>();
 	}
 
 	public ProductDetailFormDTO(int productId, List<DetailProduct> detailsProduct) {
 		super();
 		this.productId = productId;
 		this.detailsProduct = detailsProduct;
+		if(this.detailsProduct == null) {
+			this.detailsProduct = new ArrayList<DetailProduct>();
+		}
 	}
 	
-	public boolean isContain(String name, int group) {
-		return detailsProduct.contains(new DetailProduct(0, name, 0, "", group));
+	public String getValue(String name, int group) {
+		for(DetailProduct d : detailsProduct) {
+			if(d.getName().trim().equals(name) && d.getGroup() == group) {
+				return d.getValue();
+			}
+		}
+		return "";
 	}
 
 	public int getProductId() {

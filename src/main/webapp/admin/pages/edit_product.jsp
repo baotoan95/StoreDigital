@@ -11,6 +11,8 @@
 	action="${pageContext.request.contextPath }/mngProducts/${requestScope.action }"
 	enctype="multipart/form-data">
 		<form:hidden path="id"/>
+		<form:hidden path="importDate" class="form-controlb" id="importDate"/>
+		
 		<div class="box-body">
 			<div class="form-group">
 				<label for="name">Tên</label>
@@ -43,10 +45,6 @@
 						<option value="${prom.id }">${prom.name }</option>
 					</c:forEach>
 				</form:select>
-			</div>
-			<div class="form-group">
-				<label for="importDate">Ngày nhập</label> 
-				<form:input path="importDate" class="form-controlb  datetimepicker_dark" id="importDate"/>
 			</div>
 			<div class="form-group">
 				<label for="cateId">Thể loại</label>

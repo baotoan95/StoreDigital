@@ -3,12 +3,23 @@
 <%@page import="com.baotoan.spring.dto.ProductDetailFormDTO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+<%@ taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 
-<% int count = 0; %>
-<form:form modelAttribute="productDetailForm" action="${pageContext.request.contextPath }/mngProducts/${requestScope.action }" method="post">
-	<form:hidden path="productId"/>
+<h3>${requestScope.title }</h3>
+
+<div class="callout callout-info">
+	<h4>Alert!</h4>
+	${requestScope.message == null ? "No alert" : requestScope.message }
+</div>
+
+<%
+	int count = 0;
+%>
+<form:form modelAttribute="productDetailForm"
+	action="${pageContext.request.contextPath }/mngProducts/${requestScope.action }"
+	method="post">
+	<form:hidden path="productId" />
 	<c:forEach var="group" items="${requestScope.details }">
 		<div class="box">
 			<div class="box-header with-border">
@@ -25,29 +36,31 @@
 					</button>
 				</div>
 			</div>
-			
+
 			<div class="box-body" style="display: block;">
 				<c:forEach var="detail" items="${group.value }">
 					<div class="form-group">
-						<label for="name">${detail.name }</label>
-						<input type="hidden" name="detailsProduct[<%= count %>].id" value="${detail.id }"/>
-						<input type="hidden" name="detailsProduct[<%= count %>].name" value="${detail.name }">
-						<input type="hidden" name="detailsProduct[<%= count %>].productId" value="${productDetailForm.productId}">
-						<% 
-							ProductDetailFormDTO prodDetailDTO = (ProductDetailFormDTO)request.getAttribute("productDetailForm"); 
-							boolean check = prodDetailDTO.isContain(detail.name, group.key.id);
+						<label for="name">${detail.name }</label> <input type="hidden"
+							name="detailsProduct[<%= count %>].id" value="${detail.id }" /> <input
+							type="hidden" name="detailsProduct[<%= count %>].name"
+							value="${detail.name }"> <input type="hidden"
+							name="detailsProduct[<%= count %>].productId"
+							value="${productDetailForm.productId}"> <input
+							class="form-control" name="detailsProduct[<%= count %>].value"
+							value="${productDetailForm.getValue(detail.name, group.key.id) }">
+						<input type="hidden" name="detailsProduct[<%= count %>].group"
+							value="${group.key.id }">
+						<%
+							count++;
 						%>
-						<input class="form-control" name="detailsProduct[<%= count %>].value" value="${productDetailForm.isContain(detail.name, group.key.id) ?  }">
-						<input type="hidden" name="detailsProduct[<%= count %>].group" value="${group.key.id }">
-						<% count++; %>
 					</div>
 				</c:forEach>
 			</div>
 			<!-- /.box-body -->
 		</div>
 	</c:forEach>
-	
+
 	<div class="box-footer">
-		<input type="submit" value="Lưu" class="btn btn-primary"/>
+		<input type="submit" value="Lưu" class="btn btn-primary" />
 	</div>
 </form:form>

@@ -1,8 +1,9 @@
 	package com.baotoan.spring.controller;
 	
-	import java.util.HashMap;
+	import java.util.Date;
 import java.util.List;
 import java.util.Map;
+import java.util.TreeMap;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
@@ -80,6 +81,9 @@ import com.baotoan.spring.utils.UploadManager;
 			String fileName = GenerateCode.generateFileName() + ".jpg";
 			product.setUrlImage("/images/advertiments/" + fileName);
 			UploadManager.uploadFile(fileName, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
+			
+			product.setImportDate(new Date());
+			
 			int key = productDAO.addProduct(product);
 			imageDAO.addImage(new Image(0, fileName, product.getUrlImage(), key, true));
 			model.addAttribute("product", product);
@@ -96,7 +100,7 @@ import com.baotoan.spring.utils.UploadManager;
 			if(null == product) {
 				return "redirect:/mngProducts/show/1/";
 			} else {
-				Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+				Map<DetailProductGroup, List<ProductDetailByGroup>> data = new TreeMap<DetailProductGroup, List<ProductDetailByGroup>>();
 				List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
 				for(DetailProductGroup detailProductGroup : detailProductGroups) {
 					List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
@@ -116,7 +120,7 @@ import com.baotoan.spring.utils.UploadManager;
 		public String addDetail(@ModelAttribute("productDetailForm") ProductDetailFormDTO productDetailFormDTO, ModelMap model) {
 			List<DetailProduct> detailProducts = productDetailFormDTO.getDetailsProduct();
 			
-			Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+			Map<DetailProductGroup, List<ProductDetailByGroup>> data = new TreeMap<DetailProductGroup, List<ProductDetailByGroup>>();
 			List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
 			for(DetailProductGroup detailProductGroup : detailProductGroups) {
 				List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
@@ -145,8 +149,6 @@ import com.baotoan.spring.utils.UploadManager;
 		@RequestMapping(value = "/edit/{proId}")
 		public String editProduct(@PathVariable int proId, ModelMap model) {
 			Product product = productDAO.getProductById(proId);
-			
-			System.out.println(product);
 			
 			model.addAttribute("title", "Cập nhật thông tin sản phẩm");
 			model.addAttribute("product", product);
@@ -179,7 +181,7 @@ import com.baotoan.spring.utils.UploadManager;
 			if(null == product) {
 				return "redirect:/mngProducts/show/1/";
 			} else {
-				Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+				Map<DetailProductGroup, List<ProductDetailByGroup>> data = new TreeMap<DetailProductGroup, List<ProductDetailByGroup>>();
 				List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
 				for(DetailProductGroup detailProductGroup : detailProductGroups) {
 					List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
@@ -189,6 +191,7 @@ import com.baotoan.spring.utils.UploadManager;
 				model.addAttribute("action", "editDetail");
 				model.addAttribute("details", data);
 				ProductDetailFormDTO productDetailFormDTO = new ProductDetailFormDTO();
+				productDetailFormDTO.setDetailsProduct(productDAO.getDetailProductsByProductId(id));
 				productDetailFormDTO.setProductId(id);
 				model.addAttribute("productDetailForm", productDetailFormDTO);
 			}
@@ -199,7 +202,7 @@ import com.baotoan.spring.utils.UploadManager;
 		public String editDetail(@ModelAttribute("productDetailForm") ProductDetailFormDTO productDetailFormDTO, ModelMap model) {
 			List<DetailProduct> detailProducts = productDetailFormDTO.getDetailsProduct();
 			
-			Map<DetailProductGroup, List<ProductDetailByGroup>> data = new HashMap<DetailProductGroup, List<ProductDetailByGroup>>();
+			Map<DetailProductGroup, List<ProductDetailByGroup>> data = new TreeMap<DetailProductGroup, List<ProductDetailByGroup>>();
 			List<DetailProductGroup> detailProductGroups = productDetailDAO.getAllDetailGroup();
 			for(DetailProductGroup detailProductGroup : detailProductGroups) {
 				List<ProductDetailByGroup> productDetailByGroups = productDetailDAO.getAllProductDetailByGroupId(detailProductGroup.getId());
