@@ -13,21 +13,30 @@
 
 <!-- This demo uses the Chart.js graphing library and Moment.js to do date
      formatting and manipulation. -->
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
-		<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
-		
-		<!-- Include the ViewSelector2 component script. -->
-		<script src="https://ga-dev-tools.appspot.com/public/javascript/embed-api/components/view-selector2.js"></script>
-		
-		<!-- Include the DateRangeSelector component script. -->
-		<script src="https://ga-dev-tools.appspot.com/public/javascript/embed-api/components/date-range-selector.js"></script>
-		
-		<!-- Include the ActiveUsers component script. -->
-		<script src="https://ga-dev-tools.appspot.com/public/javascript/embed-api/components/active-users.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/1.0.2/Chart.min.js"></script>
+<script
+	src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.10.2/moment.min.js"></script>
 
-		
-		<!-- Include the CSS that styles the charts. -->
-		<link rel="stylesheet" href="https://ga-dev-tools.appspot.com/public/css/chartjs-visualizations.css">
+<!-- Include the ViewSelector2 component script. -->
+<script
+	src="https://ga-dev-tools.appspot.com/public/javascript/embed-api/components/view-selector2.js"></script>
+
+<!-- Include the DateRangeSelector component script. -->
+<script
+	src="https://ga-dev-tools.appspot.com/public/javascript/embed-api/components/date-range-selector.js"></script>
+
+<!-- Include the ActiveUsers component script. -->
+<script
+	src="https://ga-dev-tools.appspot.com/public/javascript/embed-api/components/active-users.js"></script>
+
+
+<!-- Include the CSS that styles the charts. -->
+<link rel="stylesheet"
+	href="https://ga-dev-tools.appspot.com/public/css/chartjs-visualizations.css">
+
+<script type="text/javascript"
+	src="<c:url value='/resources/admin/dist/js/canvasjs.min.js' />"></script>
 
 <!-- Content Header (Page header) -->
 <section class="content-header">
@@ -107,35 +116,116 @@
 	</div>
 	<!-- /.row -->
 
+	<div class="row">
+		<div class="col-md-12">
+			<!-- Custom Tabs -->
+			<div class="nav-tabs-custom">
+				<ul class="nav nav-tabs">
+					<li class="dropdown"><a class="dropdown-toggle"
+						data-toggle="dropdown" href="#" aria-expanded="false">
+							Thống kê số lượng đơn hàng <span class="caret"></span>
+					</a>
+						<ul class="dropdown-menu">
+							<li onclick="getChartByMonth()" role="presentation"><a role="menuitem" tabindex="-1">Trong tháng</a></li>
+							<li onclick="getChartByYear()" role="presentation"><a role="menuitem" tabindex="-1">Trong năm</a></li>
+						</ul>
+					</li>
+					
+				</ul>
+				
+				<div class="tab-content">
+					<div class="tab-pane active" id="tab_1">
+						<div id="chartContainer" style="height: 400px; width: 100%;"></div>
+
+						<script type="text/javascript">
+						function getChartByMonth() {
+							var date = new Date();
+							$.ajax({
+								url : "/StoreDigital/orderChartByMonth",
+								type : 'GET',
+								dataType : 'json',
+								data : {
+									"month" : 8,
+									"year" : 2015
+								},
+								contentType : 'application/json',
+								mimeType : 'application/json',
+								success : function(data) {
+									chart(data.content);
+								}, error: function(err) {
+									alert("error");
+								}
+							});
+						};
+						
+						function getChartByYear() {
+							var date = new Date();
+							$.ajax({
+								url : "/StoreDigital/orderChartByYear",
+								type : 'GET',
+								dataType : 'json',
+								data : {
+									"year" : 2015
+								},
+								contentType : 'application/json',
+								mimeType : 'application/json',
+								success : function(data) {
+									chart(data.content);
+								}, error: function(err) {
+									alert("error");
+								}
+							});
+						};
+						
+						function chart(data) {
+							var chart = new CanvasJS.Chart("chartContainer", {
+								title: {
+									text: "Basic Column Chart"
+								},
+								data: [{
+									type: "column",
+									dataPoints: $.parseJSON(data)
+								}]
+							});
+							chart.render();
+						}
+						</script>
+					</div>
+				</div>
+			</div>
+			<!-- /.col -->
+		</div>
+	</div>
+
 	<!-- Main row -->
 	<div class="row">
 		<div class="col-md-12">
 			<div class="box box-danger">
 				<header>
-				  <div id="embed-api-auth-container"></div>
-				  <div id="view-selector-container"></div>
-				  <div id="view-name"></div>
-				  <div id="active-users-container"></div>
+					<div id="embed-api-auth-container"></div>
+					<div id="view-selector-container"></div>
+					<div id="view-name"></div>
+					<div id="active-users-container"></div>
 				</header>
 				<div class="Chartjs">
-				  <h3>This Week vs Last Week (by sessions)</h3>
-				  <figure class="Chartjs-figure" id="chart-1-container"></figure>
-				  <ol class="Chartjs-legend" id="legend-1-container"></ol>
+					<h3>This Week vs Last Week (by sessions)</h3>
+					<figure class="Chartjs-figure" id="chart-1-container"></figure>
+					<ol class="Chartjs-legend" id="legend-1-container"></ol>
 				</div>
 				<div class="Chartjs">
-				  <h3>This Year vs Last Year (by users)</h3>
-				  <figure class="Chartjs-figure" id="chart-2-container"></figure>
-				  <ol class="Chartjs-legend" id="legend-2-container"></ol>
+					<h3>This Year vs Last Year (by users)</h3>
+					<figure class="Chartjs-figure" id="chart-2-container"></figure>
+					<ol class="Chartjs-legend" id="legend-2-container"></ol>
 				</div>
 				<div class="Chartjs">
-				  <h3>Top Browsers (by pageview)</h3>
-				  <figure class="Chartjs-figure" id="chart-3-container"></figure>
-				  <ol class="Chartjs-legend" id="legend-3-container"></ol>
+					<h3>Top Browsers (by pageview)</h3>
+					<figure class="Chartjs-figure" id="chart-3-container"></figure>
+					<ol class="Chartjs-legend" id="legend-3-container"></ol>
 				</div>
 				<div class="Chartjs">
-				  <h3>Top Countries (by sessions)</h3>
-				  <figure class="Chartjs-figure" id="chart-4-container"></figure>
-				  <ol class="Chartjs-legend" id="legend-4-container"></ol>
+					<h3>Top Countries (by sessions)</h3>
+					<figure class="Chartjs-figure" id="chart-4-container"></figure>
+					<ol class="Chartjs-legend" id="legend-4-container"></ol>
 				</div>
 			</div>
 			<!-- /.box -->

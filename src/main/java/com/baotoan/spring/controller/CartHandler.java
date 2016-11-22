@@ -28,6 +28,7 @@ import com.baotoan.spring.entities.Order;
 import com.baotoan.spring.entities.Payment;
 import com.baotoan.spring.entities.Product;
 import com.baotoan.spring.entities.User;
+import com.baotoan.spring.service.Mailer;
 import com.baotoan.spring.utils.Constant;
 import com.baotoan.spring.utils.GenerateCode;
 
@@ -38,7 +39,9 @@ public class CartHandler {
 	@Autowired
 	private PaymentDAO paymentDAO;
 	@Autowired
-	private OrderDAO orderDAO; 
+	private OrderDAO orderDAO;
+	@Autowired
+	private Mailer mailer;
 	
 	@SuppressWarnings("unchecked")
 	@RequestMapping(value="/cart", method = RequestMethod.GET)
@@ -226,8 +229,13 @@ public class CartHandler {
 		if(orderDAO.getDetailOrdersByOrderId(order.getId()).size() == 0) {
 			orderDAO.deleteOrder(order.getId());
 		}
+		
+		// Send mail
+		mailer.sender(new String[] {}, "DigitalStore - Gửi đơn hàng thành công", "Cảm ơn bạn đã đặt hàng, chúng tôi sẽ liên hệ với bạn sớm nhất có thể.");
+		
 		updateCartInfor(cartInfor, listCart);
 		model.addAttribute("message", "Gửi đơn hàng thành công, cảm ơn bạn!");
+		session.removeAttribute("cartInfo");
 		return "shopping_cart";
 	}
 }

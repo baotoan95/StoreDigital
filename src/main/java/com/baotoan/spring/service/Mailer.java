@@ -16,7 +16,6 @@ public class Mailer {
 		message.setTo(toAddress);
 		message.setSubject(subject);
 		message.setText(messageBody);
-		System.out.println(message);
 		try {
 			mailSender.send(message);
 		} catch (Exception e) {
