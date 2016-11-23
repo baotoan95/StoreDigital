@@ -30,4 +30,9 @@ public class OrderStatistic {
 		this.y = y;
 	}
 
+	@Override
+	public String toString() {
+		return "OrderStatistic [x=" + x + ", y=" + y + "]";
+	}
+
 }
