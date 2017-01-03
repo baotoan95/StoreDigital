@@ -7,6 +7,7 @@ import java.util.TreeMap;
 
 import javax.servlet.ServletContext;
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -241,5 +242,14 @@ import com.baotoan.spring.utils.UploadManager;
 		public String deleteProduct(@PathVariable("id") int id, ModelMap model) {
 			productDAO.deleteProduct(id);
 			return "redirect:/mngProducts/show/1/";
+		}
+		
+		@RequestMapping(value = "/productOutOfStockReport", method = RequestMethod.GET)
+		public String productOutOfStockReport(ModelMap model, HttpServletResponse response) {
+			response.setContentType("application/vnd.ms-excel");
+			response.setHeader("Content-Disposition", "attachment; filename=ProductOutOfStockReport.xls");
+			List<Product> products = (List<Product>) productDAO.getProductOutOfStock(10);
+			model.addAttribute("products", products);
+			return "productReport";
 		}
 	}

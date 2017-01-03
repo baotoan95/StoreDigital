@@ -338,4 +338,15 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 		return result;
 	}
 
+	public List<Product> getProductOutOfStock(int quantity) {
+		String sql = "select * from prods where quantity<=?";
+		List<Product> result = null;
+		try {
+			result = jdbcTemplate.query(sql, new Object[] {quantity}, new ProductMapper());
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return result;
+	}
+
 }

@@ -7,12 +7,12 @@
 				<h3 class="box-title">Danh sách sản phẩm</h3>
 				<div class="box-tools">
 					<div class="input-group" style="width: 150px;">
-						<input type="text" name="table_search"
-							class="form-control input-sm pull-right" placeholder="Search" />
+<!-- 						<input type="text" name="table_search" -->
+<!-- 							class="form-control input-sm pull-right" placeholder="Search" /> -->
 						<div class="input-group-btn">
-							<button class="btn btn-sm btn-default">
-								<i class="fa fa-search"></i>
-							</button>
+							<a class="btn btn-sm btn-default" href="${pageContext.request.contextPath }/mngProducts/productOutOfStockReport">
+								Sản phẩm sắp hết hàng
+							</a>
 						</div>
 					</div>
 				</div>

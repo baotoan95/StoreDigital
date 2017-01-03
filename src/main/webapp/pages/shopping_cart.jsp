@@ -124,7 +124,8 @@
 														$('#datetimepicker_dark').datetimepicker({theme:'dark'});
 													</script>
 												</div></li>
-											<li><label for="region_id">Hình thức thanh toán</label>
+											<li>
+												<label for="region_id">Hình thức thanh toán</label>
 												<div class="input-box">
 													<form:select path="paymentId"
 														title="Chọn hình thức thanh toán" id="region_id"
@@ -137,7 +138,8 @@
 														class="input-text required-entry" title="State/Province"
 														value="" name="region" id="region">
 													<form:errors class="error" path="paymentId" />
-												</div></li>
+												</div>
+											</li>
 										</ul>
 										<div class="buttons-set11">
 											<button class="button get-quote" title="Get a Quote"
@@ -173,8 +175,7 @@
 									</colgroup>
 									<tfoot>
 										<tr>
-											<td colspan="1" class="a-left" style=""><strong>Tổng
-													tiền phải trả</strong></td>
+											<td colspan="1" class="a-left" style=""><strong>Tổng tiền phải trả</strong></td>
 											<td class="a-right" style=""><strong><span
 													class="price" id='totalPay'>${sessionScope.cartInfor.totalPay }
 														VNĐ</span></strong></td>

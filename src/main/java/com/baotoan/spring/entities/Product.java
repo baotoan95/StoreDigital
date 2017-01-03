@@ -19,6 +19,8 @@ public class Product implements Serializable {
 	private Date importDate;
 	private int cateId;
 	private String description;
+	private int quantity;
+
 	// Addition
 	private String urlImage;
 	private List<Image> listImage;
@@ -27,9 +29,8 @@ public class Product implements Serializable {
 	public Product() {
 	}
 
-	public Product(int id, String name, int oldPrice, int newPrice, int views,
-			int reviews, String tags, int postId, int promotionId,
-			Date importDate, int cateId, String description) {
+	public Product(int id, String name, int oldPrice, int newPrice, int views, int reviews, String tags, int postId,
+			int promotionId, Date importDate, int cateId, String description) {
 		this.id = id;
 		this.name = name;
 		this.oldPrice = oldPrice;
@@ -162,6 +163,14 @@ public class Product implements Serializable {
 
 	public void setDetail(Map<String, Map<String, DetailProduct>> detail) {
 		this.detail = detail;
+	}
+
+	public int getQuantity() {
+		return quantity;
+	}
+
+	public void setQuantity(int quantity) {
+		this.quantity = quantity;
 	}
 
 	@Override

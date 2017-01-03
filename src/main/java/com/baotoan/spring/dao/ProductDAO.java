@@ -33,4 +33,6 @@ public interface ProductDAO {
 	
 	public int getTotalProduct();
 	public List<Product> getProductsByPostId(int id);
+	
+	public List<Product> getProductOutOfStock(int quantity);
 }
