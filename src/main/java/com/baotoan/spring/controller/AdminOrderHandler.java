@@ -5,6 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
+import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -153,5 +154,14 @@ public class AdminOrderHandler {
 			}
 		}
 		return result;
+	}
+	
+	@RequestMapping(value = "printBill/{orderId}", method = RequestMethod.GET)
+	public String printBill(@PathVariable("orderId") String orderId, ModelMap model, HttpServletResponse response) {
+		response.setContentType("application/vnd.ms-excel");
+		response.setHeader("Content-Disposition", "attachment; filename=Bill.xls");
+		Order order = orderDAO.getOrderById(orderId);
+		model.addAttribute("order", order);
+		return "bill";
 	}
 }

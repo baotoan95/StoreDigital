@@ -11,6 +11,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 
 	<context:component-scan base-package="com.baotoan.spring.*" />
 	<mvc:annotation-driven />
+	<context:annotation-config/>
 
 	<!-- Database common -->
 	<bean id="baseDAO" class="com.baotoan.spring.dao.BaseDAO">
@@ -91,6 +92,8 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 		<!-- setting maximum upload size -->
 		<property name="maxUploadSize" value="1000000" />
 	</bean>
+	
+	<bean id="printBill" class="com.baotoan.spring.viewsolver.PrintBillExcelBuilder"/>
 
 	<mvc:resources location="/resources/" mapping="/resources/**" />
 

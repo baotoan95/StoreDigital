@@ -238,7 +238,7 @@ public class CartHandler {
 		session.removeAttribute("cartInfo");
 		
 		if(order.getPaymentId() == 3) {
-			return "redirect:https://www.nganluong.vn/button_payment.php?receiver=baotoan.95@gmail.com&product_name=1324&price="+order.getTotalPay()+"&return_url=http://localhost:8080/StoreDigital&comments=MaGiamGia";
+			return "redirect:https://www.nganluong.vn/button_payment.php?receiver=baotoan.95@gmail.com&product_name="+id+"&price="+order.getTotalPay()+"&return_url=http://localhost:8080/StoreDigital&comments=MaGiamGia";
 		}
 		return "shopping_cart";
 	}

@@ -23,6 +23,7 @@
 						Tổng tiền: ${order.totalPay } VNĐ
 					</small>
 					<div class="tools">
+						<a href="${pageContext.request.contextPath }/mngOrders/printBill/${order.id}">print</a>
 						<a href="${pageContext.request.contextPath }/mngOrders/view/${order.id }/"><i class="fa fa-edit" title="Xem"></i></a>
 						<a><i class="fa fa-trash-o" style="cursor: pointer;" onclick="delOrder('${order.id}', this);" title="Xóa"></i></a>
 					</div>
