@@ -237,6 +237,10 @@ public class CartHandler {
 		model.addAttribute("message", "Gửi đơn hàng thành công, cảm ơn bạn!");
 		session.removeAttribute("cartInfo");
 		
+		// Update number of order in dashboard
+		int totalOrderNotApproved = orderDAO.getTotalOrderNotApproved();
+		session.setAttribute("totalOrderNotApproved", totalOrderNotApproved);
+		
 		if(order.getPaymentId() == 3) {
 			return "redirect:https://www.nganluong.vn/button_payment.php?receiver=baotoan.95@gmail.com&product_name="+id+"&price="+order.getTotalPay()+"&return_url=http://localhost:8080/StoreDigital&comments=MaGiamGia";
 		}

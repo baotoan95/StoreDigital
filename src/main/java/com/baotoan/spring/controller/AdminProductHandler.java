@@ -78,11 +78,14 @@ import com.baotoan.spring.utils.UploadManager;
 			model.addAttribute("posts", postDAO.getAllWithoutContent());
 			model.addAttribute("promotions", promotionDAO.getAll());
 			model.addAttribute("action", "add");
+			
 			return "edit_product";
 		}
 		
 		@RequestMapping(value = "/add", method = RequestMethod.POST)
-		public String addProduct(@ModelAttribute Product product, @RequestParam("avatarUrl") MultipartFile file, ModelMap model) {
+		public String addProduct(@ModelAttribute Product product, 
+				@RequestParam("avatarUrl") MultipartFile file, 
+				ModelMap model, HttpSession session) {
 			String fileName = GenerateCode.generateFileName() + ".jpg";
 			product.setUrlImage("/images/" + fileName);
 			UploadManager.uploadFile(fileName, file, "D:/Programer/Web/StoreDigital/src/main/webapp/resources/images/advertiments");
@@ -93,6 +96,9 @@ import com.baotoan.spring.utils.UploadManager;
 			imageDAO.addImage(new Image(0, fileName, product.getUrlImage(), key, true));
 			model.addAttribute("product", product);
 			if(key > 0) {
+				// Update number of products in dashboard
+				int totalProduct = productDAO.getTotalProduct();
+				session.setAttribute("totalProduct", totalProduct);
 				return "redirect:/mngProducts/addDetail/" + key;
 			} else {
 				return "redirect:/mngProducts/add";

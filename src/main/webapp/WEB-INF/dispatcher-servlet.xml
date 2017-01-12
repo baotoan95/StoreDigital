@@ -24,7 +24,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 		<property name="url"
 			value="jdbc:mysql://localhost:3306/inspirestore?useUnicode=true&amp;characterEncoding=UTF-8" />
 		<property name="username" value="root" />
-		<property name="password" value="root" />
+		<property name="password" value="administratorr" />
 		<property name="removeAbandoned" value="true" />
 		<property name="initialSize" value="20" />
 		<property name="maxActive" value="30" />
@@ -74,7 +74,7 @@ http://www.springframework.org/schema/mvc http://www.springframework.org/schema/
 		<property name="host" value="smtp.gmail.com" />
 		<property name="port" value="587" />
 		<property name="username" value="baotoan.95@gmail.com" />
-		<property name="password" value="pass" />
+		<property name="password" value="btit1995" />
 		<property name="defaultEncoding" value="UTF-8" />
 		<!-- The name of the property, following JavaBean naming conventions -->
 		<property name="javaMailProperties">
