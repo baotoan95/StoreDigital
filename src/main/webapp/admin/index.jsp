@@ -126,8 +126,22 @@
 							Thống kê số lượng đơn hàng <span class="caret"></span>
 					</a>
 						<ul class="dropdown-menu">
-							<li onclick="getChartByMonth()" role="presentation"><a role="menuitem" tabindex="-1">Trong tháng</a></li>
-							<li onclick="getChartByYear()" role="presentation"><a role="menuitem" tabindex="-1">Trong năm</a></li>
+							<li role="presentation"><a role="menuitem" tabindex="-1">Trong tháng</a></li>
+							<li>
+								<select onclick="getChartByMonth()" id="month">
+									<% for(int i = 1; i <= 12; i++) { %>
+									<option value="<%= i%>"><%= i %></option>
+									<%} %>
+								</select>
+							</li>
+							<li role="presentation"><a role="menuitem" tabindex="-1">Trong năm</a></li>
+							<li>
+								<select onclick="getChartByYear()" id="year">
+									<% for(int i = 2010; i <= 2017; i++) { %>
+									<option value="<%= i%>"><%= i %></option>
+									<%} %>
+								</select>
+							</li>
 						</ul>
 					</li>
 					
@@ -145,15 +159,15 @@
 								type : 'GET',
 								dataType : 'json',
 								data : {
-									"month" : 8,
-									"year" : 2015
+									"month" : $('#month').val(),
+									"year" : $('#year').val()
 								},
 								contentType : 'application/json',
 								mimeType : 'application/json',
 								success : function(data) {
 									chart(data.content);
 								}, error: function(err) {
-									alert("error");
+									alert("Không có dữ liệu");
 								}
 							});
 						};
@@ -180,7 +194,7 @@
 						function chart(data) {
 							var chart = new CanvasJS.Chart("chartContainer", {
 								title: {
-									text: "Basic Column Chart"
+									text: "THỐNG KÊ SỐ LƯỢNG ĐƠN HÀNG"
 								},
 								data: [{
 									type: "column",

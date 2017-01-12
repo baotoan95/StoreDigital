@@ -55,7 +55,7 @@
 							<div class="buttons-set">
 								<button id="send2" name="send" type="submit"
 									class="button login">
-									<span>Đăng Nhập</span>
+									<span>Đăng Kí</span>
 								</button>
 							</div>
 						</form:form>

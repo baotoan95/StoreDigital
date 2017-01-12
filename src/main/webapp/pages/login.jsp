@@ -63,3 +63,5 @@
 		<br> <br> <br> <br> <br>
 	</div>
 </section>
+
+<script src="<c:url value="/resources/js/rememberpass.js"/>"></script>

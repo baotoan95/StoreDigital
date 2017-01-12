@@ -14,7 +14,7 @@ function remember() {
 			$('#error').html(data.status);
 		},
 		error : function(data, status, er) {
-			alert("error: " + data + " status: " + status + " er:" + er);
+			alert("Vui lòng nhập email");
 		}
 	});
 }

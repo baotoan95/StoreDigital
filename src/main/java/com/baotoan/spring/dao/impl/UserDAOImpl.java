@@ -15,9 +15,13 @@ import com.baotoan.spring.utils.Pagination;
 @Repository("userDAO")
 public class UserDAOImpl extends BaseDAO implements UserDAO {
 	public boolean addUser(User user) {
+		try {
 		String sql = "insert into users(mail,pass,cmnd,name,address,city,tel,score,status,role) values(?,?,?,?,?,?,?,?,?,?)";
-		return (jdbcTemplate.update(sql, new Object[]{user.getMail(), user.getPass(), user.getId(), user.getName(),
+			return (jdbcTemplate.update(sql, new Object[]{user.getMail(), user.getPass(), user.getId(), user.getName(),
 				user.getAddress(), user.getCity(), user.getTel(), user.getScore(), user.getStatus(), user.getRole()}) > 0);
+		} catch (Exception e) {
+			return false;
+		}
 	}
 
 	public boolean updateUser(User user) {
