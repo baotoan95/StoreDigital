@@ -6,9 +6,16 @@
 			<div class="box-header">
 				<h3 class="box-title">Danh sách sản phẩm</h3>
 				<div class="box-tools">
+					<div class="box-tools pull-right">
+			           	<div class="has-feedback">
+			           		<form action="${pageContext.request.contextPath }/mngProducts/search" method="get">
+				                <input type="text" name="pname" class="form-control input-sm" placeholder="Search product">
+			           			<input type="hidden" name="p" value="1"/>
+				            	<span class="glyphicon glyphicon-search form-control-feedback"></span>
+			            	</form>
+			            </div>
+			        </div>
 					<div class="input-group" style="width: 150px;">
-<!-- 						<input type="text" name="table_search" -->
-<!-- 							class="form-control input-sm pull-right" placeholder="Search" /> -->
 						<div class="input-group-btn">
 							<a class="btn btn-sm btn-default" href="${pageContext.request.contextPath }/mngProducts/productOutOfStockReport">
 								Sản phẩm sắp hết hàng

@@ -102,11 +102,6 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 				new Object[] { detailProductGroup.getName(), detailProductGroup.getId() }) > 0);
 	}
 
-//	public boolean deleteDetailProductGroup(int id) {
-//		String sql = "delete * FROM prod_group_detail WHERE id=?";
-//		return (jdbcTemplate.update(sql, new Object[] { id }) > 0);
-//	}
-
 	public DetailProductGroup getDetailProductGroupById(int id) {
 		String sql = "SELECT * FROM prod_group_detail WHERE id=?";
 		return jdbcTemplate.queryForObject(sql, new Object[] { id }, new DetailProductGroupMapper());
@@ -294,7 +289,7 @@ public class ProductDAOImpl extends BaseDAO implements ProductDAO {
 
 		return result;
 	}
-
+	
 	public List<DetailProduct> getDetailProductsByProductId(int productId) {
 		String sql = "select * from prod_detail where productId = ?";
 		return jdbcTemplate.query(sql, new Object[] { productId }, new DetailProductMapper());

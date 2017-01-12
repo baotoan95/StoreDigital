@@ -1,6 +1,7 @@
 	package com.baotoan.spring.controller;
 	
-	import java.util.Date;
+	import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 import java.util.TreeMap;
@@ -257,5 +258,18 @@ import com.baotoan.spring.utils.UploadManager;
 			List<Product> products = (List<Product>) productDAO.getProductOutOfStock(10);
 			model.addAttribute("products", products);
 			return "productReport";
+		}
+		
+		@SuppressWarnings("unchecked")
+		@RequestMapping(value = "/search", method = RequestMethod.GET)
+		public String search(@RequestParam("pname") String name, @RequestParam("p") int page, ModelMap model) {
+			List<Product> listResult = new ArrayList<Product>();
+			Map<String, Object> rs =  productDAO.getProducts(name, Constant.SEARCH_DEFAULT, 
+					Constant.SORT_BY_NAME, 20, page);
+			listResult = (List<Product>)rs.get("products");
+			model.addAttribute("pagination", rs.get("html"));
+			model.addAttribute("products", listResult);
+			model.addAttribute("pname", name);
+			return "mg_products";
 		}
 	}
