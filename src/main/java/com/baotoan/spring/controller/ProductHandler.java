@@ -60,7 +60,6 @@ public class ProductHandler {
 		model.addAttribute("pagination", rs.get("html"));
 		model.addAttribute("result", listResult);
 		model.addAttribute("search", search);
-		System.out.println("adsfsdfsdf");
 		return "grid";
 	}
 	

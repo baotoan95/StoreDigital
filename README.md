@@ -10,7 +10,8 @@ Web siêu thị điện máy.
 - So sánh mặt hàng
 - Quản lý users
 - Quản lý CMS
-- ...
+- Report
+- In hoá đơn
 
 ## Công nghệ áp dụng
 - Spring (spring mvc)
